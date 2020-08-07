@@ -17,6 +17,7 @@ namespace midtermproj
                 Console.Beep();
                 Console.Beep();
                 Console.Beep();
+<<<<<<< HEAD
                 Console.Beep();
 
                 Console.WriteLine("so everyone kicked him out of the village and racism was solved forever.");
@@ -24,6 +25,15 @@ namespace midtermproj
                 Console.WriteLine("bruh");
                 Console.WriteLine("You'll never change me");
             };
+=======
+                Console.Beep();
+
+                Console.WriteLine("so everyone kicked him out of the village and racism was solved forever.");
+
+                Console.WriteLine("bruh");
+                Console.WriteLine("You'll never change me");
+            }
+>>>>>>> 108d535ae554f3dbf8a700e87c3ae1e4386156f9
 
 
 
