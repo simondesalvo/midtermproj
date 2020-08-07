@@ -18,12 +18,7 @@ namespace midtermproj
             id = Id; name = Name; enroll = Enroll;
         }
 
-        protected Member(int id, string name)
-        {
-            Id = id;
-            Name = name;
-        }
-
+        //deleted constructor
         abstract public void CheckIn(ClubClass club);
         abstract public int IdAssign(int memberID);
 
