@@ -19,7 +19,6 @@ namespace midtermproj
             id = Id; name = Name; enroll = Enroll; employee = Employee;
         }
 
-       
 
         abstract public void CheckIn(ClubClass club);
         abstract public int IdAssign();

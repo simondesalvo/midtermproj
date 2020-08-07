@@ -37,7 +37,7 @@ namespace midtermproj
         {
             if (Id == 0)
             {
-                Id = 600+"multiDB.Count"
+                Id = 600 + "multiDB.Count";
             }
             else
             {
