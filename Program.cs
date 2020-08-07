@@ -23,7 +23,7 @@ namespace midtermproj
 
                 Console.WriteLine("bruh");
                 Console.WriteLine("You'll never change me");
-            }
+            };
 
 
 
