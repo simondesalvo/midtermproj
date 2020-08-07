@@ -7,11 +7,11 @@ namespace midtermproj
         static void Main(string[] args)
         {
 
-            Console.WriteLine("hi");
-            Console.WriteLine("Hello world, merge error!");
+            Console.Beep();
+            Console.Beep();
             Console.Beep();
 
-            Console.WriteLine("You'll never change me");
+            Console.Beep();
 
         }
     }
