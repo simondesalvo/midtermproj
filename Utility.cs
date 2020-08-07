@@ -8,6 +8,8 @@ namespace midtermproj
     {
         public static bool LoopProgram(string message)
         {
+            //Can be used to set up the Continue loop for the program
+
             bool end = false;
             string cont = "";
             Console.WriteLine(message);
@@ -32,6 +34,8 @@ namespace midtermproj
         }
         public static string GetInput(string message)
         {
+            //used to display a message in green, then return the user's response
+            
             string input = "";
             PrintGreen(message);
             input = Console.ReadLine();
@@ -40,12 +44,16 @@ namespace midtermproj
         }
         public static void PrintGreen(string message)
         {
+            //Makes text green. Nothing too fancy
+
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(message);
             Console.ResetColor();
         }
         public static void PrintYellow(string message)
         {
+            //Makes text yellow. Maybe good for error messages?
+            
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(message);
             Console.ResetColor();

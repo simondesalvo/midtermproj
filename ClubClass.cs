@@ -23,7 +23,7 @@ namespace midtermproj
     {
         public string ClubName { get; set; }
         public string StreetAddress { get; set; }
-        public Ci City{ get; set; }
+        public Ci City { get; set; }
         public St State { get; set; }
 
         public ClubClass() { }
@@ -35,9 +35,8 @@ namespace midtermproj
             this.State = State;
         }
 
-        
 
-        public void PrintClubs()
+        public static List<ClubClass> ListClubs()
         {
             List<ClubClass> ClubList = new List<ClubClass>
             {
@@ -48,12 +47,18 @@ namespace midtermproj
                 new ClubClass("Ron Swanson's Pyramid of Greatness", "123 Parks Dr", Ci.Pawnee, St.Indiana)
             };
 
+            return ClubList;
+        }
+
+        public void PrintClubs()
+        {
+            List<ClubClass> ClubList = ListClubs();
+
             for (int i = 0; i < ClubList.Count; i++)
             {
                 Console.WriteLine(i + " " + ClubList[i].ClubName + " " + ClubList[i].StreetAddress + " " + ClubList[i].City + " " + ClubList[i].State);
             }
+
         }
-        
-        
     }
 }
