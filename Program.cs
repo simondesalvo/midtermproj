@@ -6,7 +6,8 @@ namespace midtermproj
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello world, more like, Hello merge error!");
+            Console.Beep();
         }
     }
 }
