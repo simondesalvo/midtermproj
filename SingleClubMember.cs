@@ -27,7 +27,7 @@ namespace midtermproj
             {
                 Console.Clear();
                 Utility.PrintGreen("Which gym does the member which to enroll in?");
-                club.PrintClubs();
+                ////club.PrintClubs();
 
             }
             else

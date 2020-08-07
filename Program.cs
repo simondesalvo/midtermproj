@@ -6,6 +6,8 @@ namespace midtermproj
     {
         static void Main(string[] args)
         {
+            ClubClass club = new ClubClass();
+            club.PrintClubs();
 
         }
     }
