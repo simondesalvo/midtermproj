@@ -8,15 +8,24 @@ namespace midtermproj
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public DateTime Enroll { get; set; }
         public Member()
         {
 
         }
-        public Member(int id, string name)
+        public Member(int id, string name, DateTime enroll)
         {
-            id = Id; name = Name;
+            id = Id; name = Name; enroll = Enroll;
         }
+
+        protected Member(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
+
         abstract public void CheckIn(ClubClass club);
+        abstract public int IdAssign(int memberID);
 
     }
 }

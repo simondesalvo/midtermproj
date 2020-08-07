@@ -8,6 +8,8 @@ namespace midtermproj
     {
         public static int Integer(string message)
         {
+            //validates if a number is an integer. additional parameters can be added via regex
+
             string input = "";
             int intInput = -1;
             input = Utility.GetInput(message);
@@ -16,11 +18,13 @@ namespace midtermproj
                 Console.Beep();
                 input = Utility.GetInput(message);
             }
-            return = intInput;
+            return  intInput;
 
         }
         public static bool YesNo(string message)
         {
+            //validates a Yes or no response being entered. returns true if yes is selected, false if no is selected.
+
             string input = "";
             input = Utility.GetInput(message);
             bool end = false;
