@@ -16,18 +16,20 @@ namespace midtermproj
         }
         public override void CheckIn(ClubClass club)
         {
-
+            
+            
 
         }
 
-        public override int IdAssign(int memberID)
+        public override int IdAssign()
         {
             ClubClass club = new ClubClass();
-            if (memberID == 0)
+            if (ID == 0)
             {
                 Console.Clear();
                 Utility.PrintGreen("Which gym does the member which to enroll in?");
-                ////club.PrintClubs();
+                club.PrintClubs();
+
 
             }
             else
@@ -38,7 +40,7 @@ namespace midtermproj
 
             }
 
-            return memberID;
+            return ID;
         }
     }
 }

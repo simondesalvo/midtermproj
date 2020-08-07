@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace midtermproj
 {
@@ -6,8 +7,22 @@ namespace midtermproj
     {
         static void Main(string[] args)
         {
-            ClubClass club = new ClubClass();
-            club.PrintClubs();
+            /*"Welcome to the UI or client or whatev!
+            //    "What would you like to do?"
+
+            //    1)Add member;
+                        --->new member();
+            //            -->What is ThreadExceptionEventArgs members name? ________________;
+            //                  member.IDassign()  -> # Xxx     X = gym
+                                                                xx = how many registered to that gym
+                                                                
+
+                            MultiDB             SingleDB             ClubDB
+                                600
+                               
+            ID = 600 + multiDB.Count
+            multiDB.Count = 1
+            */
 
         }
     }
