@@ -1,5 +1,10 @@
 ﻿using System;
+
 using System.Threading;
+
+using System.Collections.Generic;
+using System.IO;
+
 
 namespace midtermproj
 {
@@ -7,6 +12,7 @@ namespace midtermproj
     {
         static void Main(string[] args)
         {
+
             /*"Welcome to the UI or client or whatev!
             //    "What would you like to do?"
 
@@ -23,6 +29,7 @@ namespace midtermproj
             ID = 600 + multiDB.Count
             multiDB.Count = 1
             */
+
 
         }
     }
