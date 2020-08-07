@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace midtermproj
 {       //at least four clubs, eventually getting some file i/o stuff with Joe, basic details like name and address
