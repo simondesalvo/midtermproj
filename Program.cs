@@ -7,11 +7,11 @@ namespace midtermproj
         static void Main(string[] args)
         {
 
-            Console.WriteLine("hi");
-            Console.WriteLine("Hello world, merge error!");
+            Console.WriteLine("Once upon a time there was a boy");
+            Console.WriteLine("and he was super racist");
             Console.Beep();
 
-            Console.WriteLine("You'll never change me");
+            Console.WriteLine("so everyone kicked him out of the village and racism was solved forever.");
 
         }
     }
