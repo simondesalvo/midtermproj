@@ -16,7 +16,7 @@ namespace midtermproj
                 Console.Beep();
                 input = Utility.GetInput(message);
             }
-            return = intInput;
+            return intInput;
 
         }
         public static bool YesNo(string message)
