@@ -7,11 +7,24 @@ namespace midtermproj
         static void Main(string[] args)
         {
 
-            Console.Beep();
-            Console.Beep();
-            Console.Beep();
 
-            Console.Beep();
+
+            Console.WriteLine("Once upon a time there was a dragon named Albi");
+            Console.WriteLine("and he was super racist");
+            while (true)
+            {
+                Console.Beep();
+                Console.Beep();
+                Console.Beep();
+                Console.Beep();
+                Console.Beep();
+            }
+            Console.WriteLine("so everyone kicked him out of the village and racism was solved forever.");
+
+            Console.WriteLine("bruh");
+            Console.WriteLine("You'll never change me");
+
+
 
         }
     }
