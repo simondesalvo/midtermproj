@@ -11,7 +11,12 @@ namespace midtermproj
             Console.WriteLine("and he was super racist");
             Console.Beep();
 
+
             Console.WriteLine("so everyone kicked him out of the village and racism was solved forever.");
+
+            Console.WriteLine("bruh");
+            Console.WriteLine("You'll never change me");
+
 
         }
     }
