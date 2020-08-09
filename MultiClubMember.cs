@@ -7,14 +7,13 @@ namespace midtermproj
     class MultiClubMember : Member
     {
         public int Points { get; set; }
-        public double Bill { get; set; }
+        
         public int Checkins { get; set; }
         public MultiClubMember() { }
 
-        public MultiClubMember(int id, string name, DateTime enroll,bool employee, int points, double bill, int checkins):base(id,name,enroll,employee)
+        public MultiClubMember(int id, string name, DateTime enroll, int club,  bool employee, int points, double bill, int checkins):base(id,name,enroll,club,employee,bill)
         {
             Points = points;
-            Bill = bill;
             Checkins = checkins;
         }
        

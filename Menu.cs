@@ -15,15 +15,16 @@ namespace midtermproj
             "Quit"
         };
 
-        public static void MainMenu()
+        public static void DisplayMainMenu()
         {
             Console.Clear();
-            Utility.PrintGreen("Hello! Welcome to the IHeartDiamonds: Clubs Manager! Please select an option below!");
+            Utility.PrintGreen("Hello! Welcome to the IHeartDiamonds: Clubs Manager!");
             for (int i = 0; i <mainMenu.Count; i++)
             {
                 Utility.PrintGreen($"{i+1}. {mainMenu[i]} ");
             }
-
+            Console.WriteLine("");
+            Validate.NumberRange($"Please select an option from (please input 1 - {mainMenu.Count}).",mainMenu.Count);
         }
     }
 }

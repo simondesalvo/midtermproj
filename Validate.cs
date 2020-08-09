@@ -47,13 +47,13 @@ namespace midtermproj
             }
             return end;
         }
-        public static int Gym(string message,int clubCount)
+        public static int NumberRange(string message,int range)
         {
             int output = -1;
             while (true)
             {
                 output = Integer(message);
-                if (output > clubCount||output<0)
+                if (output > range||output<0)
                 {
                     Console.Beep();
                     continue;
@@ -62,11 +62,9 @@ namespace midtermproj
                 {
                     return output;
                 }
-                
             }
-
+        }
 
         }
     }
 
-}

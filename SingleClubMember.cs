@@ -10,7 +10,7 @@ namespace midtermproj
         {
 
         }
-        public Single_Club_Member(int id, string name, DateTime enroll, bool employee) : base(id, name, enroll,employee)
+        public Single_Club_Member(int id, string name, DateTime enroll, int club, bool employee,double bill) : base(id, name, enroll,club,employee,bill)
         {
 
 
@@ -32,9 +32,9 @@ namespace midtermproj
                     Console.Clear();
                     Utility.PrintGreen("Which gym does the member which to enroll in?");
                     club.PrintClubs();
-                    idConstructor += Validate.Gym($"Please enter the gym of interest for applicant (0-{ClubClass.ListClubs().Count})", ClubClass.ListClubs().Count);
+                    idConstructor += Validate.NumberRange($"Please enter the gym of interest for applicant (0-{ClubClass.ListClubs().Count})", ClubClass.ListClubs().Count);
                 idConstructor = idConstructor * 100;
-                for (int i =0, i</*memberDb*/; i++)
+                for (int i =0; i</*memberDb*/; i++)
                 {
                     if (/*memberDb*/[i].ID>=idConstructor || /*memberDb*/[i].ID < idConstructor + 100)
                     {
