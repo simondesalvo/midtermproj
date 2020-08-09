@@ -24,17 +24,28 @@ namespace midtermproj
 
         public void ClubsDbPull()
         {
-            List<ClubClass> ClubDb = new List<ClubClass>();
+            List<ClubClass> clubs = new List<ClubClass>();
 
             StreamReader reader = new StreamReader("../../../ClubDb.txt");
 
-            string clubcheck = reader.ReadLine();
-            while (clubcheck != null)
+            string clubline = reader.ReadLine();
+            while (clubline != null)
             {
-                clubcheck = reader.ReadLine();
+                string[] clubsplit = clubline.Split('|');
+                //Look enum.parse (might get rid of enums)
+                clubs.Add(new ClubClass(clubsplit[0], clubsplit[1], Enum.Parse(typeof(Ci), clubsplit[2]), Enum.Parse(St, clubsplit[3])));
+                clubline = reader.ReadLine();
+
             }
+
             reader.Close();
+            for (int i = 0; i < clubs.Count; i++)
+            {
+                //Print the list of the clubs
+            }
+
         }
+
 
         public void MembersDbPush()
         {
