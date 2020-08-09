@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace midtermproj
 {
@@ -46,7 +47,26 @@ namespace midtermproj
             }
             return end;
         }
+        public static int Gym(string message,int clubCount)
+        {
+            int output = -1;
+            while (true)
+            {
+                output = Integer(message);
+                if (output > clubCount||output<0)
+                {
+                    Console.Beep();
+                    continue;
+                }
+                else
+                {
+                    return output;
+                }
+                
+            }
 
+
+        }
     }
 
 }
