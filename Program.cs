@@ -8,7 +8,7 @@ namespace midtermproj
     {
         static void Main(string[] args)
         {
-
+            
         }
     }
 }
