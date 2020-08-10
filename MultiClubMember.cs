@@ -28,10 +28,7 @@ namespace midtermproj
                 _multiClubMembers.Add(member);
             }
         }
-        public void StartUp()
-        {
-            _PopulateMultiMemberList();
-        }
+
         private int CountMembers()
         {
             FileIO membersDb = new FileIO();
@@ -144,9 +141,6 @@ namespace midtermproj
             Utility.PrintGreen($"Fees due: {Bill}");
             Utility.PrintGreen($"Points Earned: {Points}");
         }
-
-
-
 
         public MultiClubMember FindMember(int iD)
         {

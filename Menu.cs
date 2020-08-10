@@ -19,17 +19,20 @@ namespace midtermproj
         public static Club SelectClub()
         {
             Club club = new Club();
-            return(club.ListClubs(Validate.NumberRange($"Hello! Welcome to the IHeartDiamonds: Clubs Manager: We've got members in Spades(tm)! Which club are you operating from? (input 0-{club.CountClubs() - 1})", club.CountClubs() - 1)));
+            Utility.PrintGreen($"Hello! Welcome to the IHeartDiamonds: Clubs Manager: We've got members in Spades(tm)!");
+            club.DisplayClubs();
+            return (club.PullClubs(Validate.NumberRange($"Which club are you operating from? (input 0-{club.CountClubs() - 1})", club.CountClubs() - 1)));
+
         }
-        
+
         public static bool DisplayMainMenu(Club club)
         {
+            string inputMembership = "";
             bool output = false;
             Console.Clear();
-            Club c = new Club();
             SingleClubMember s = new SingleClubMember();
             MultiClubMember m = new MultiClubMember();
-            Utility.PrintGreen("Hello! Welcome to the IHeartDiamonds: Clubs Manager!");
+            Utility.PrintGreen($"{club.ClubName}: Operations");
 
 
             //ask what club they're at, for input into clubcheckin methods
@@ -44,12 +47,12 @@ namespace midtermproj
                 int idNum = Validate.Integer("Please input your member's ID number:");
                 if (idNum < 600)
                 {
-                    s=s.FindMember(idNum);
+                    s = s.FindMember(idNum);
                     s.CheckIn(club);
                 }
                 else if (idNum >= 600)
                 {
-                    m=m.FindMember(idNum);
+                    m = m.FindMember(idNum);
                     m.CheckIn(club);
                     Console.ReadKey();
                 }
@@ -58,18 +61,17 @@ namespace midtermproj
             else if (input == 2)
             {
                 //add member
-                Console.WriteLine("Would you like to sign up for a single club membership (s) or a multi club membership(m)?");
-                ConsoleKeyInfo singMult = Console.ReadKey();
-                Console.Clear();
-                if (singMult.Key == ConsoleKey.S)
-                {
 
+                inputMembership = Utility.GetKeyInput("Would you like to sign up for a Single club membership (s) or a Multi-club membership (m)?"); ;
+                Console.Clear();
+                if (inputMembership == "s")
+                {
                     SingleClubMember newMemb = new SingleClubMember();
                     newMemb.Name = Utility.GetInput("What is the new member's name?");
                     newMemb.Enroll = DateTime.Now;
                     newMemb.AssignID();
                     newMemb.Employee = true;
-                    newMemb.Bill = 10; //or anything we want as the default single club bill
+                    newMemb.Bill = 10; 
 
                     Console.Clear();
                     newMemb.DisplayInfo();
@@ -77,14 +79,12 @@ namespace midtermproj
                     if (Validate.YesNo("Does the above info look correct?"))
                     {
                         newMemb.DBAdd();
+                        Utility.PrintGreen($"{newMemb.Name} added to the database!");
+                        Console.ReadKey();
                     }
-                  
-
-                    Console.WriteLine("It worked! Yas!");
-                    Console.ReadKey();
-                    //time to write to file.io
+               
                 }
-                else if (singMult.Key == ConsoleKey.M)
+                else if (inputMembership == "m")
                 {
                     //same business as single, but with multiclub class
                     MultiClubMember newMemb = new MultiClubMember();
@@ -106,24 +106,29 @@ namespace midtermproj
             }
             else if (input == 3)
             {
-               int idNum = Validate.Integer("Please input your member's ID number:");
-               if (idNum < 600)
+                int idNum = Validate.Integer("Please input your member's ID number:");
+                if (idNum < 600)
                 {
-                    s.FindMember(idNum);
+                    s=s.FindMember(idNum);
+                    Console.Clear();
+                    s.DisplayInfo();
+                    Utility.PrintGreen("Press any key to return to the main menu.");
+                    Console.ReadKey();
                 }
-               else if(idNum >= 600)
+                else if (idNum >= 600)
                 {
-                    m.FindMember(idNum);
+                    m=m.FindMember(idNum);
+                    
                 }
 
             }
             else if (input == 4)
             {
                 //remove member
-                int idNum = Validate.Integer("Please input your member's ID number:");
+                int idNum = Validate.Integer("Please input your member's ID number: ");
                 if (idNum < 600)
                 {
-                    s=s.FindMember(idNum);
+                    s = s.FindMember(idNum);
                     Console.WriteLine();
                     if (Validate.YesNo($"Are you sure you wish to delete {s.Name}?"))
                     {
@@ -133,11 +138,11 @@ namespace midtermproj
                     {
                         s.Status = true;
                     }
-                       
+
                 }
                 else if (idNum >= 600)
                 {
-                    m=m.FindMember(idNum);
+                    m = m.FindMember(idNum);
                     Console.WriteLine();
                     if (Validate.YesNo($"Are you sure you wish to delete {m.Name}?"))
                     {
@@ -150,13 +155,13 @@ namespace midtermproj
                 }
 
                 //display member method
-               
+
 
 
             }
             else if (input == 5)
             {
-                int idNum = Validate.Integer("Please input your member's ID number:");
+                int idNum = Validate.Integer("Please input your member's ID number: ");
                 if (idNum < 600)
                 {
                     s = s.FindMember(idNum);
@@ -174,7 +179,7 @@ namespace midtermproj
             else if (input == 6)
             {
                 output = Validate.YesNo("Are you sure you want to quit?");
-               
+
             }
             else
             {

@@ -19,14 +19,7 @@ namespace midtermproj
         }
 
         private List<SingleClubMember> _singleMembers = new List<SingleClubMember>();
-        private void _PopulateSingleMemberList()
-        {
-            FileIO database = new FileIO();
-            foreach (SingleClubMember member in database.SingleMemberDbPull())
-            {
-                _singleMembers.Add(member);
-            }
-        }
+
         private int CountMembers()
         {
 
@@ -44,11 +37,6 @@ namespace midtermproj
             FileIO membersDB = new FileIO();
             SingleClubMember member = new SingleClubMember();
             member = membersDB.SingleMemberDbPull().Find(m => m.ID == iD);
-
-            Console.Clear();
-            member.DisplayInfo();
-            Console.ReadKey();
-
             return member;
         }
 
@@ -82,8 +70,8 @@ namespace midtermproj
 
                 clubs.DisplayClubs();
 
-                input = Validate.NumberRange($"Please enter the club of interest for applicant (0-{clubs.CountClubs() - 1}", clubs.CountClubs() - 1);
-                clubs = clubs.ListClubs(input);
+                input = Validate.NumberRange($"Please enter the club of interest for applicant (0-{clubs.CountClubs() - 1})", clubs.CountClubs() - 1);
+                clubs = clubs.PullClubs(input);
                 Club = clubs.ClubName;
                 //club ID is tied to club; 100's place designates the club they belong to at a glance, with 600's designating a multiclub member
                 ID = (1 + input) * 100 + CountMembers();

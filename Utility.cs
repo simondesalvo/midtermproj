@@ -41,6 +41,14 @@ namespace midtermproj
             Console.WriteLine(message);
             Console.ResetColor();
         }
+        public static string GetKeyInput(string message)
+        {
+            //used to display a message in green, then return the user's response
+            string input = "";
+            PrintGreen(message);
+            input = Console.ReadKey().KeyChar.ToString();
+            return Validate.InputClub(input);
+        }
     }
 }
 

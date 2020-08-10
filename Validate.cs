@@ -69,10 +69,11 @@ namespace midtermproj
             Regex regex = new Regex("^[sm]$");
             while (!regex.IsMatch(c.ToLower()))
             {
-                Utility.PrintGreen("Please enter \"s\" for single club membership or \"m\" for multiclub membership.");
-                c = Console.ReadKey().ToString();
+                Console.Clear();
+                Utility.PrintGreen("Please enter \"s\" for Single-Club membership or \"m\" for Multi-Club membership.");
+                c = Console.ReadKey().KeyChar.ToString();
             }
-            return c;
+            return c.ToLower();
         }
 
         }

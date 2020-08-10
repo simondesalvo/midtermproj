@@ -34,21 +34,6 @@ namespace midtermproj
             this.City = City;
             this.State = State;
         }
-       
-
-        //public static List<Club> ListClubs()
-        //{
-        //    List<Club> ClubList = new List<Club>
-        //    {
-        //        new Club("Prof Oaks House of PikaPain", "123 Wolverine Ct", Ci.AnnArbor, St.Michigan),
-        //        new Club("Joe Lewis Memorial Punch Out", "123 Woodward Ave", Ci.Detroit, St.Michigan),
-        //        new Club("Whip It Good", "123 Devo Ln", Ci.Columbus, St.Ohio),
-        //        new Club("We Fought a War With Michigan for This!?", "123 Toledo St", Ci.Toledo, St.Ohio),
-        //        new Club("Ron Swanson's Pyramid of Greatness", "123 Parks Dr", Ci.Pawnee, St.Indiana)
-        //    };
-
-        //    return ClubList;
-        //}
 
         public void DisplayClubs()
         {
@@ -66,7 +51,7 @@ namespace midtermproj
             int clubCount = clubDB.ClubsDbPull().Count;
             return clubCount;
         }
-        public Club ListClubs(int input)
+        public Club PullClubs(int input)
         {
             FileIO clubDB = new FileIO();
             List<Club> clubs = new List<Club>();
