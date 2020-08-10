@@ -114,7 +114,7 @@ namespace midtermproj
             Utility.PrintGreen($"Name: {Name}");
             Utility.PrintGreen($"Fees due: {Bill}");
         }
-        public void DBshenanigans()
+        public void DBAdd()
         {
             FileIO membersDB = new FileIO();
             List<SingleClubMember> tempMember = new List<SingleClubMember>();
@@ -125,6 +125,26 @@ namespace midtermproj
             }
           
             tempMember.Add(this);
+            membersDB.SingleMembersDbPush(tempMember);
+        }
+
+        public void DBRemove()
+        {
+            FileIO membersDB = new FileIO();
+            List<SingleClubMember> tempMember = new List<SingleClubMember>();
+
+            for (int i = 0; i < membersDB.SingleMemberDbPull().Count; i++)
+            {
+                if (membersDB.SingleMemberDbPull()[i].ID==ID)
+                {
+                    Status = false;
+                    tempMember.Add(this);
+                }
+                else
+                {
+                    tempMember.Add(membersDB.SingleMemberDbPull()[i]);
+                }
+            }
             membersDB.SingleMembersDbPush(tempMember);
         }
     }

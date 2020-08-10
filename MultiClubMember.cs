@@ -167,7 +167,7 @@ namespace midtermproj
             return member;
         }
 
-        public void DBshenanigans()
+        public void DBAdd()
         {
             FileIO membersDB = new FileIO();
             List<MultiClubMember> tempMember = new List<MultiClubMember>();
@@ -178,6 +178,26 @@ namespace midtermproj
             }
 
             tempMember.Add(this);
+            membersDB.MultiMembersDbPush(tempMember);
+        }
+
+        public void DBRemove()
+        {
+            FileIO membersDB = new FileIO();
+            List<MultiClubMember> tempMember = new List<MultiClubMember>();
+
+            for (int i = 0; i < membersDB.MultiMembersDbPull().Count; i++)
+            {
+                if (membersDB.MultiMembersDbPull()[i].ID == ID)
+                {
+                    Status = false;
+                    tempMember.Add(this);
+                }
+                else
+                {
+                    tempMember.Add(membersDB.MultiMembersDbPull()[i]);
+                }
+            }
             membersDB.MultiMembersDbPush(tempMember);
         }
 

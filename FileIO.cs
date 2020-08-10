@@ -20,7 +20,7 @@ namespace midtermproj
             {
                 string[] membersplit = memberline.Split('|');
                 SingleClubMember memb = new SingleClubMember(int.Parse(membersplit[0]), membersplit[1], DateTime.Parse(membersplit[2]),
-                                                       int.Parse(membersplit[3]), bool.Parse(membersplit[4]), double.Parse(membersplit[5]),bool.Parse(membersplit[6]));
+                                                       int.Parse(membersplit[3]), bool.Parse(membersplit[4]), double.Parse(membersplit[5]), bool.Parse(membersplit[6]));
                     members.Add(memb);
                     memberline = reader.ReadLine();
             }
