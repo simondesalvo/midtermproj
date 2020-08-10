@@ -16,7 +16,7 @@ namespace midtermproj
         {
 
         }
-        public Member(int id, string name, DateTime enroll, int club,  bool employee,double bill)
+        public Member(int id, string name, DateTime enroll, int club,  bool employee, double bill)
         {
 
 
