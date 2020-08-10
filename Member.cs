@@ -17,11 +17,11 @@ namespace midtermproj
         {
 
         }
-<<<<<<< HEAD
-        public Member(int id, string name, DateTime enroll, int club,  bool employee, double bill)
-=======
+
+       
+
         public Member(int id, string name, DateTime enroll, int club,  bool employee,double bill,bool status)
->>>>>>> ec3ce20e6a81a66710e98e8df3fc13c80526a086
+
         {
 
 
