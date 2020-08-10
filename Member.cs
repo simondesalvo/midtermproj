@@ -20,12 +20,12 @@ namespace midtermproj
         {
 
 
-            id = ID; name = Name; enroll = Enroll; club = Club; employee = Employee; bill = Bill;
+            ID = id; Name = name; Enroll = enroll; Club = club; Employee = employee; Bill = bill;
 
         }
 
 
-        abstract public void CheckIn(ClubClass club);
+        abstract public void CheckIn(Club club);
         abstract public int AssignID();
         abstract public void DisplayFees();
 

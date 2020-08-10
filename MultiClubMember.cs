@@ -7,40 +7,44 @@ namespace midtermproj
     class MultiClubMember : Member
     {
         public int Points { get; set; }
-        
+
         public int Checkins { get; set; }
         public MultiClubMember() { }
 
-        public MultiClubMember(int id, string name, DateTime enroll, int club,  bool employee, int points, double bill, int checkins):base(id,name,enroll,club,employee,bill)
+        public MultiClubMember(int id, string name, DateTime enroll, int club, bool employee, int points, double bill, int checkins) : base(id, name, enroll, club, employee, bill)
         {
             Points = points;
             Checkins = checkins;
         }
 
-        
-        private List<MultiClubMember> multiClubMembers = new List<MultiClubMember>();
 
+        private List<MultiClubMember> _multiClubMembers = new List<MultiClubMember>();
+
+        private void _PopulateMultiMemberList()
+        {
+            FileIO database = new FileIO();
+            foreach (MultiClubMember member in database.MultiMembersDbPull())
+            {
+                _multiClubMembers.Add(member);
+            }
+        }
+        public void StartUp()
+        {
+            _PopulateMultiMemberList();
+        }
         private int CountMembers()
         {
             FileIO membersDb = new FileIO();
             List<MultiClubMember> membersList = new List<MultiClubMember>();
-            foreach (MultiClubMember member in membersDb.MemberDbPull())
+            foreach (MultiClubMember member in membersDb.MultiMembersDbPull())
             {
-                    membersList.Add(member);
-                
+                membersList.Add(member);
+
             }
             return membersList.Count;
         }
-        private MultiClubMember FindMember(int iD)
-        {
-            FileIO membersDb = new FileIO();
-            MultiClubMember member = new MultiClubMember();
-            member = (MultiClubMember)membersDb.MemberDbPull().Find(m => m.ID == iD);
-            return member;
 
-        }
-
-        public override void CheckIn(ClubClass club)
+        public override void CheckIn(Club club)
         {
             Console.WriteLine($"{Name} is welcome at {club.ClubName}");
             Points += 5;
@@ -59,7 +63,7 @@ namespace midtermproj
         {
             if (ID == 0)
             {
-
+                Club = 6;
                 ID = 600 + CountMembers();
             }
             else
@@ -68,12 +72,12 @@ namespace midtermproj
             }
             return ID;
         }
-        
+
         public void DisplayInfo()
         {
             Console.WriteLine($"Name: {Name}\nID: {ID}\nDate of Enrollment: {Enroll}\n Accumulated Points: {Points}");
-        } 
-        
+        }
+
         public void CountedPoints()
         {
             if (Checkins > 15 && Checkins < 30)
@@ -104,7 +108,7 @@ namespace midtermproj
             else
             {
                 Console.WriteLine("I don't know what you did but you did it");
-            }   
+            }
         }
 
         public void EmployeeCountedPoints()
@@ -146,5 +150,37 @@ namespace midtermproj
             Utility.PrintGreen($"Fees due: {Bill}");
             Utility.PrintGreen($"Points Earned: {Points}");
         }
+
+
+
+
+        public MultiClubMember FindMember(int iD)
+        {
+            FileIO membersDB = new FileIO();
+            MultiClubMember member = new MultiClubMember();
+            member = membersDB.MultiMembersDbPull().Find(m => m.ID == iD);
+
+            Console.Clear();
+            member.DisplayInfo();
+            Console.ReadKey();
+
+            return member;
+        }
+
+        public void DBshenanigans()
+        {
+            FileIO membersDB = new FileIO();
+            List<MultiClubMember> tempMember = new List<MultiClubMember>();
+
+            for (int i = 0; i < membersDB.MultiMembersDbPull().Count; i++)
+            {
+                tempMember.Add(membersDB.MultiMembersDbPull()[i]);
+            }
+
+            tempMember.Add(this);
+            membersDB.MultiMembersDbPush(tempMember);
+        }
+
+
     }
 }

@@ -14,9 +14,17 @@ namespace midtermproj
         {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             
 =======
 =======
+=======
+            //Utility.Startup() populates private lists with the information from the database in order to protect the information
+            //of those in the database. Currently only set up for members. Will expand to include clubs.
+            
+
+
+>>>>>>> 1b01502ba8d411b686705c5c5a70669014b82fa3
 
 >>>>>>> 4a7883d894766e9bcb28d4117c6f9a4a00781779
             bool end = false;
