@@ -11,7 +11,7 @@ namespace midtermproj
         {
 
         }
-        public SingleClubMember(int id, string name, DateTime enroll, int club, bool employee, double bill) : base(id, name, enroll, club, employee, bill)
+        public SingleClubMember(int id, string name, DateTime enroll, int club, bool employee, double bill,bool status) : base(id, name, enroll, club, employee, bill,status)
         {
 
 
