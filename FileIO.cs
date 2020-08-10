@@ -20,7 +20,7 @@ namespace midtermproj
             {
                 string[] membersplit = memberline.Split('|');
                 SingleClubMember memb = new SingleClubMember(int.Parse(membersplit[0]), membersplit[1], DateTime.Parse(membersplit[2]),
-                                                       int.Parse(membersplit[3]), bool.Parse(membersplit[4]), double.Parse(membersplit[5]), bool.Parse(membersplit[6]));
+                                                       (membersplit[3]), bool.Parse(membersplit[4]), double.Parse(membersplit[5]), bool.Parse(membersplit[6]));
                     members.Add(memb);
                     memberline = reader.ReadLine();
             }
@@ -40,7 +40,7 @@ namespace midtermproj
             {
                 string[] membersplit = memberline.Split('|');
                 members.Add(new MultiClubMember(int.Parse(membersplit[0]), membersplit[1], DateTime.Parse(membersplit[2]),
-                                                int.Parse(membersplit[3]), bool.Parse(membersplit[4]), int.Parse(membersplit[5]),
+                                                (membersplit[3]), bool.Parse(membersplit[4]), int.Parse(membersplit[5]),
                                                 double.Parse(membersplit[6]), int.Parse(membersplit[7]), bool.Parse(membersplit[8])));
                 memberline = reader.ReadLine();
             }
@@ -75,8 +75,8 @@ namespace midtermproj
             foreach (MultiClubMember member in membersDb)
             {
 
-                writer.WriteLine($"{member.ID} | {member.Name} | {member.Enroll} | {member.Club} | {member.Employee} | {member.Points} | " +
-             $"{member.Bill} | {member.Checkins} | {member.Status}");
+                writer.WriteLine($"{member.ID}|{member.Name}|{member.Enroll}|{member.Club}|{member.Employee}|{member.Points}|" +
+             $"{member.Bill}|{member.Checkins}|{member.Status}");
 
 
             }
@@ -106,13 +106,12 @@ namespace midtermproj
             return clubs;
         }
 
-        public void ClubsDbPush()
+        public void ClubsDbPush(List<Club> clubs)
         {
-            List<Club> ClubDb = Club.ListClubs();
 
             StreamWriter writer = new StreamWriter("../../../ClubDb.txt");
 
-            foreach (Club club in ClubDb)
+            foreach (Club club in clubs)
             {
                 writer.WriteLine($"{club.ClubName} | {club.StreetAddress} | {club.City} | {club.State}");
             }

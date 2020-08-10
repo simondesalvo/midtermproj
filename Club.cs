@@ -36,29 +36,45 @@ namespace midtermproj
         }
        
 
-        public static List<Club> ListClubs()
+        //public static List<Club> ListClubs()
+        //{
+        //    List<Club> ClubList = new List<Club>
+        //    {
+        //        new Club("Prof Oaks House of PikaPain", "123 Wolverine Ct", Ci.AnnArbor, St.Michigan),
+        //        new Club("Joe Lewis Memorial Punch Out", "123 Woodward Ave", Ci.Detroit, St.Michigan),
+        //        new Club("Whip It Good", "123 Devo Ln", Ci.Columbus, St.Ohio),
+        //        new Club("We Fought a War With Michigan for This!?", "123 Toledo St", Ci.Toledo, St.Ohio),
+        //        new Club("Ron Swanson's Pyramid of Greatness", "123 Parks Dr", Ci.Pawnee, St.Indiana)
+        //    };
+
+        //    return ClubList;
+        //}
+
+        public void DisplayClubs()
         {
-            List<Club> ClubList = new List<Club>
+            FileIO clubDB = new FileIO();
+            List<Club> clubs = new List<Club>();
+            for(int i=0;i<clubDB.ClubsDbPull().Count;i++)
             {
-                new Club("Prof Oaks House of PikaPain", "123 Wolverine Ct", Ci.AnnArbor, St.Michigan),
-                new Club("Joe Lewis Memorial Punch Out", "123 Woodward Ave", Ci.Detroit, St.Michigan),
-                new Club("Whip It Good", "123 Devo Ln", Ci.Columbus, St.Ohio),
-                new Club("We Fought a War With Michigan for This!?", "123 Toledo St", Ci.Toledo, St.Ohio),
-                new Club("Ron Swanson's Pyramid of Greatness", "123 Parks Dr", Ci.Pawnee, St.Indiana)
-            };
-
-            return ClubList;
-        }
-
-        public void PrintClubs()
-        {
-            List<Club> ClubList = ListClubs();
-
-            for (int i = 0; i < ClubList.Count; i++)
-            {
-                Console.WriteLine(i + " " + ClubList[i].ClubName + " " + ClubList[i].StreetAddress + " " + ClubList[i].City + " " + ClubList[i].State);
+                Utility.PrintCyan($"{i} {clubDB.ClubsDbPull()[i].ClubName}");
             }
-
+        }
+        public int CountClubs()
+        {
+            FileIO clubDB = new FileIO();
+            List<Club> clubs = new List<Club>();
+            int clubCount = clubDB.ClubsDbPull().Count;
+            return clubCount;
+        }
+        public Club ListClubs(int input)
+        {
+            FileIO clubDB = new FileIO();
+            List<Club> clubs = new List<Club>();
+            for (int i = 0; i < clubDB.ClubsDbPull().Count; i++)
+            {
+                clubs.Add(clubDB.ClubsDbPull()[i]);
+            }
+            return clubs[input];
         }
     }
 }

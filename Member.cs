@@ -9,7 +9,7 @@ namespace midtermproj
         public int ID { get; set; }
         public string Name { get; set; }
         public DateTime Enroll { get; set; }
-        public int Club { get; set; }
+        public string Club { get; set; }
         public double Bill { get; set; }
         public bool Employee { get; set; }
         public bool Status { get; set; }
@@ -20,7 +20,7 @@ namespace midtermproj
 
        
 
-        public Member(int id, string name, DateTime enroll, int club,  bool employee,double bill,bool status)
+        public Member(int id, string name, DateTime enroll, string club,  bool employee,double bill,bool status)
 
         {
 

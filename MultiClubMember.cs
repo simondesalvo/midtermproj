@@ -11,7 +11,7 @@ namespace midtermproj
         public int Checkins { get; set; }
         public MultiClubMember() { }
 
-        public MultiClubMember(int id, string name, DateTime enroll, int club, bool employee, int points, double bill, int checkins, bool status) : base(id, name, enroll, club, employee, bill,status)
+        public MultiClubMember(int id, string name, DateTime enroll, string club, bool employee, int points, double bill, int checkins, bool status) : base(id, name, enroll, club, employee, bill,status)
         {
             Points = points;
             Checkins = checkins;
@@ -57,13 +57,14 @@ namespace midtermproj
             {
                 CountedPoints();
             }
+            UpdatePoints();
         }
 
         public override int AssignID()
         {
             if (ID == 0)
             {
-                Club = 6;
+                Club = "All";
                 ID = 600 + CountMembers();
             }
             else
@@ -75,7 +76,7 @@ namespace midtermproj
 
         public void DisplayInfo()
         {
-            Console.WriteLine($"Name: {Name}\nID: {ID}\nDate of Enrollment: {Enroll}\n Accumulated Points: {Points}");
+            Utility.PrintCyan($"Name: {Name}\nID: {ID}\nDate of Enrollment: {Enroll}\n Accumulated Points: {Points}\nMulticlub Member!");
         }
 
         public void CountedPoints()
@@ -104,10 +105,6 @@ namespace midtermproj
             {
                 Console.WriteLine("Congratulations!! You get a CHICKEN!!!!!!");
                 Points = 0;
-            }
-            else
-            {
-                Console.WriteLine("I don't know what you did but you did it");
             }
         }
 
@@ -138,10 +135,7 @@ namespace midtermproj
                 Console.WriteLine("Congratulations!! You get a CHICKEN!!!!!!");
                 Points = 0;
             }
-            else
-            {
-                Console.WriteLine("I don't know what you did but you did it");
-            }
+
         }
 
         public override void DisplayFees()
@@ -200,7 +194,25 @@ namespace midtermproj
             }
             membersDB.MultiMembersDbPush(tempMember);
         }
+        public void UpdatePoints()
+        {
+            FileIO membersDB = new FileIO();
+            List<MultiClubMember> tempMember = new List<MultiClubMember>();
 
-
+            for (int i = 0; i < membersDB.MultiMembersDbPull().Count; i++)
+            {
+                if (membersDB.MultiMembersDbPull()[i].ID == ID)
+                {
+                    
+                    tempMember.Add(this);
+                }
+                else
+                {
+                    tempMember.Add(membersDB.MultiMembersDbPull()[i]);
+                }
+            }
+            membersDB.MultiMembersDbPush(tempMember);
+        }
     }
 }
+

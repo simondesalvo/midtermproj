@@ -16,9 +16,15 @@ namespace midtermproj
             "Display Fees and Points",
             "Quit"
         };
-
-        public static void DisplayMainMenu()
+        public static Club SelectClub()
         {
+            Club club = new Club();
+            return(club.ListClubs(Validate.NumberRange($"Hello! Welcome to the IHeartDiamonds: Clubs Manager: We've got members in Spades(tm)! Which club are you operating from? (input 0-{club.CountClubs() - 1})", club.CountClubs() - 1)));
+        }
+
+        public static void DisplayMainMenu(Club club)
+        {
+
             Console.Clear();
             Club c = new Club();
             SingleClubMember s = new SingleClubMember();
@@ -35,20 +41,19 @@ namespace midtermproj
             int input = Validate.NumberRange($"Please select an option from (please input 1 - {mainMenu.Count}).", mainMenu.Count);
             if (input == 1)
             {
-                ////check-in
-                //Validate.Integer("Please input your ID number");
-                //if (idInt >= 600)
-                //{
-                //    //MultiClubMember.CheckIn(/*we need some way to input the clubName*/);
-                //}
-                //else if (idInt < 600)
-                //{
-                //    //Single_Club_Member.CheckIn(/*same prob*/);
-                //}
-                //else
-                //{
-                //    Console.WriteLine("Uh oh.");
-                //}
+                int idNum = Validate.Integer("Please input your member's ID number:");
+                if (idNum < 600)
+                {
+                    s=s.FindMember(idNum);
+                    s.CheckIn(club);
+                }
+                else if (idNum >= 600)
+                {
+                    m=m.FindMember(idNum);
+                    m.CheckIn(club);
+                    Console.ReadKey();
+                }
+
             }
             else if (input == 2)
             {
@@ -151,22 +156,14 @@ namespace midtermproj
             }
             else if (input == 5)
             {
-                //display fees and points
-                Console.WriteLine("Single or Multi");
-                ConsoleKeyInfo singMult = Console.ReadKey();
-                if (singMult.Key == ConsoleKey.S)
+                int idNum = Validate.Integer("Please input your member's ID number:");
+                if (idNum < 600)
                 {
-                    Console.WriteLine("Member id?");
-                    //display feepoints here
+                    s.FindMember(idNum);
                 }
-                else if (singMult.Key == ConsoleKey.M)
+                else if (idNum >= 600)
                 {
-                    Console.WriteLine("Member ID?");
-                    //display feepoints
-                }
-                else
-                {
-                    Console.WriteLine("Uh oh");
+                    m.FindMember(idNum);
                 }
             }
             else if (input == 6)
