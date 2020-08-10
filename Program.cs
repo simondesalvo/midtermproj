@@ -12,96 +12,92 @@ namespace midtermproj
     {
         static void Main(string[] args)
         {
-            FileIO IO = new FileIO();
 
-            IO.ClubsDbPull();
+            bool end = false;
+            while (!end)
+            {
+                Menu.DisplayMainMenu();
 
+                #region AddMember
+                /*    1)Add member;
+                //            What is  members name? ________________; name goes into name property of member object Variable for now.
 
-            //bool end = false;
-            //while (!end)
-            //{
-            //    Menu.DisplayMainMenu();
+                check DB; if they are there, say already a member! (probably if() conditional; bounce to main menu)
 
-            //    #region AddMember
-            //    /*    1)Add member;
-            //    //            What is  members name? ________________; name goes into name property of member object Variable for now.
+                                Single or Multigym? 
 
-            //    check DB; if they are there, say already a member! (probably if() conditional; bounce to main menu)
-
-            //                    Single or Multigym? 
-
-            //                        --->new member(); new member object created, goes on list of members                
+                                    --->new member(); new member object created, goes on list of members                
 
 
-            //                                                    SINGLE STUFF
-            //                                                    "What gym do they want to join?"
-            //    //                  member.IDassign()  -> # Xxx     X = gym
-            //                                                        xx = how many registered to that gym
+                                                                SINGLE STUFF
+                                                                "What gym do they want to join?"
+                //                  member.IDassign()  -> # Xxx     X = gym
+                                                                    xx = how many registered to that gym
 
 
-            //                                                       Multistuff
-            //                          member.IDassign() 
+                                                                   Multistuff
+                                      member.IDassign() 
 
-            //                                                        Display Info
-            //                                                "Does this look correct?"
-            //                            If Yes,
-            //                                After object is filled in, add it to the file IO
-            //                            If No,
+                                                                    Display Info
+                                                            "Does this look correct?"
+                                        If Yes,
+                                            After object is filled in, add it to the file IO
+                                        If No,
 
-            //    */
-            //    #endregion
+                */
+                #endregion
 
-            //    #region Display Info
-            //    /*
-            //                Prompt user: Who are you looking up?
-            //                Scan list of ALL members
-            //                membername.DiplayInfo();
-            //                press ket to return to main menu. Clear console and resets main menu
-            //     */
-            //    #endregion
+                #region Display Info
+                /*
+                            Prompt user: Who are you looking up?
+                            Scan list of ALL members
+                            membername.DiplayInfo();
+                            press ket to return to main menu. Clear console and resets main menu
+                 */
+                #endregion
 
-            //    #region Remove Member
-            //    /*
-            //            Prompt user: Who do you want to remove?
-            //            Input name, search list
-            //            name.DisplayInfo()
-            //            "Are you sure you wish to delete this person?"
-            //                (Y/N)
-            //            if Y, delete from list (using index). This will remove from database as it is rewriten to file IO
-            //            if N, the return to main menu
-            //            Option: return to remove member instead
+                #region Remove Member
+                /*
+                        Prompt user: Who do you want to remove?
+                        Input name, search list
+                        name.DisplayInfo()
+                        "Are you sure you wish to delete this person?"
+                            (Y/N)
+                        if Y, delete from list (using index). This will remove from database as it is rewriten to file IO
+                        if N, the return to main menu
+                        Option: return to remove member instead
 
-            //                       */
-            //    #endregion
+                                   */
+                #endregion
 
-            //    #region  Fees / Points
-            //    /*
-            //        Prmopt user for "Please input member Name"
-            //                        Search list of ALL members
-            //                    conditional: 
-            //                            if (employee is true)
-            //                            {
-            //                                    discount fees for both (fee * 0.9)
-            //                             }
-            //                                if multimember (Show Fees and points earned)
-            //                                 else if single member (show fees)
-            //                */
-            //    #endregion
+                #region  Fees / Points
+                /*
+                    Prmopt user for "Please input member Name"
+                                    Search list of ALL members
+                                conditional: 
+                                        if (employee is true)
+                                        {
+                                                discount fees for both (fee * 0.9)
+                                         }
+                                            if multimember (Show Fees and points earned)
+                                             else if single member (show fees)
+                            */
+                #endregion
 
-            //    #region Quit
-            //    /*
+                #region Quit
+                /*
 
-            //    ends loop and closes things
-            //    maybe upload to file IO when closing        
+                ends loop and closes things
+                maybe upload to file IO when closing        
 
 
-            //    */
-            //    end = Validate.YesNo("Are you sure you want to quit?");
-            //    #endregion
-            //}
-            //Console.Clear();
-            //Console.Beep(800,200); Console.Beep(400, 200); Console.Beep(200, 200); Console.Beep(100, 200);
-            //Utility.PrintGreen("Thank you for using the IHeartDiamond: Clubs manager! Have a nice day!");
+                */
+
+                #endregion
+            }
+            Console.Clear();
+            //Console.Beep(800, 200); Console.Beep(400, 200); Console.Beep(200, 200); Console.Beep(100, 200);
+            Utility.PrintGreen("Thank you for using the IHeartDiamond: Clubs manager! Have a nice day!");
         }
     }
 }

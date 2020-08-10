@@ -16,7 +16,30 @@ namespace midtermproj
             Points = points;
             Checkins = checkins;
         }
-       
+
+        
+        private List<MultiClubMember> multiClubMembers = new List<MultiClubMember>();
+
+        private int CountMembers()
+        {
+            FileIO membersDb = new FileIO();
+            List<MultiClubMember> membersList = new List<MultiClubMember>();
+            foreach (MultiClubMember member in membersDb.MemberDbPull())
+            {
+                    membersList.Add(member);
+                
+            }
+            return membersList.Count;
+        }
+        private MultiClubMember FindMember(int iD)
+        {
+            FileIO membersDb = new FileIO();
+            MultiClubMember member = new MultiClubMember();
+            member = (MultiClubMember)membersDb.MemberDbPull().Find(m => m.ID == iD);
+            return member;
+
+        }
+
         public override void CheckIn(ClubClass club)
         {
             Console.WriteLine($"{Name} is welcome at {club.ClubName}");
@@ -32,11 +55,12 @@ namespace midtermproj
             }
         }
 
-        public override int IdAssign()
+        public override int AssignID()
         {
             if (ID == 0)
             {
-                ID = 600 + "multiDB.Count";
+
+                ID = 600 + CountMembers();
             }
             else
             {
@@ -114,6 +138,13 @@ namespace midtermproj
             {
                 Console.WriteLine("I don't know what you did but you did it");
             }
+        }
+
+        public override void DisplayFees()
+        {
+            Utility.PrintGreen($"Name: {Name}");
+            Utility.PrintGreen($"Fees due: {Bill}");
+            Utility.PrintGreen($"Points Earned: {Points}");
         }
     }
 }

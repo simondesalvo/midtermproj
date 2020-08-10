@@ -26,7 +26,8 @@ namespace midtermproj
 
 
         abstract public void CheckIn(ClubClass club);
-        abstract public int IdAssign();
+        abstract public int AssignID();
+        abstract public void DisplayFees();
 
     }
 }

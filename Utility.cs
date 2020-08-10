@@ -25,6 +25,14 @@ namespace midtermproj
             Console.WriteLine(message);
             Console.ResetColor();
         }
+        public static void PrintCyan(string message)
+        {
+            //Makes text cyan. Nothing too fancy
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
         public static void PrintYellow(string message)
         {
             //Makes text yellow. Maybe good for error messages?

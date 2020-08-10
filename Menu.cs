@@ -29,51 +29,51 @@ namespace midtermproj
             //ask what club they're at, for input into clubcheckin methods
             for (int i = 0; i <mainMenu.Count; i++)
             {
-                Utility.PrintGreen($"{i+1}. {mainMenu[i]} ");
+                Utility.PrintCyan($"{i+1}. {mainMenu[i]} ");
             }
             Console.WriteLine("");
             int input = Validate.NumberRange($"Please select an option from (please input 1 - {mainMenu.Count}).",mainMenu.Count);
             if (input == 1)
             {
-                //check-in
-                Console.WriteLine("Please input your ID number");
-                string idString = Console.ReadLine();
-                int idInt;
-                int.TryParse(idString, out idInt);
-                if (idInt >= 600)
-                {
-                    MultiClubMember.CheckIn(/*we need some way to input the clubName*/);
-                }
-                else if (idInt < 600)
-                {
-                    Single_Club_Member.CheckIn(/*same prob*/);
-                }
-                else
-                {
-                    Console.WriteLine("Uh oh.");
-                }
+                ////check-in
+                //Validate.Integer("Please input your ID number");
+                //if (idInt >= 600)
+                //{
+                //    //MultiClubMember.CheckIn(/*we need some way to input the clubName*/);
+                //}
+                //else if (idInt < 600)
+                //{
+                //    //Single_Club_Member.CheckIn(/*same prob*/);
+                //}
+                //else
+                //{
+                //    Console.WriteLine("Uh oh.");
+                //}
             }
             else if (input == 2)
             {
                 //add member
-                Console.WriteLine("Would you like to sign up for a single club membership or a multi club membership?");
+                Console.WriteLine("Would you like to sign up for a single club membership (s) or a multi club membership(m)?");
                 ConsoleKeyInfo singMult = Console.ReadKey();
                 if (singMult.Key == ConsoleKey.S)
                 {
-                    Console.WriteLine("Name?");
-                    string newName = Console.ReadLine();
-                    Console.WriteLine("Date?");
-                    DateTime date = DateTime.Parse(Console.ReadLine());
-                    c.PrintClubs();
-                    Console.WriteLine("Club number?");
-                    string club = Console.ReadLine();
-                    int clubNum;
-                    int.TryParse(club, out clubNum);
-                    bool employee = true;
-                    double bill = 10; //or anything we want as the default single club bill
-                    int id = s.IdAssign();
+                    bool confirm = false;
+                    while (!confirm)
+                    {
+                        Single_Club_Member newMemb = new Single_Club_Member();
+                        newMemb.Name = Utility.GetInput("What is the new member's name?");
+                        newMemb.Enroll = DateTime.Now;
+                        newMemb.AssignID();
+                        newMemb.Employee = true;
+                        newMemb.Bill = 10; //or anything we want as the default single club bill
 
-                    Single_Club_Member newMemb = new Single_Club_Member(id, newName, date, clubNum, employee, bill);
+                        Console.Clear();
+                        newMemb.DisplayInfo();
+
+                        confirm = Validate.YesNo("Does the above info look correct?");
+                    }
+                    Console.WriteLine("It worked! Yas!");
+                    Console.ReadKey();
                     //time to write to file.io
                 }
                 else if (singMult.Key == ConsoleKey.M)
@@ -84,6 +84,7 @@ namespace midtermproj
             else if (input == 3)
             {
                 //display member
+                Console.WriteLine("Congrats! it's 3!");
             }
             else if(input == 4)
             {
@@ -124,7 +125,7 @@ namespace midtermproj
             }
             else if (input == 6)
             {
-                //quit
+                Validate.YesNo("Are you sure you want to quit?");
             }
             else
             {
