@@ -7,14 +7,13 @@ namespace midtermproj
     class MultiClubMember : Member
     {
         public int Points { get; set; }
-        public double Bill { get; set; }
+        
         public int Checkins { get; set; }
         public MultiClubMember() { }
 
-        public MultiClubMember(int id, string name, DateTime enroll, int points, double bill, int checkins):base(id,name,enroll)
+        public MultiClubMember(int id, string name, DateTime enroll, int club,  bool employee, int points, double bill, int checkins):base(id,name,enroll,club,employee,bill)
         {
             Points = points;
-            Bill = bill;
             Checkins = checkins;
         }
        
@@ -35,20 +34,20 @@ namespace midtermproj
 
         public override int IdAssign()
         {
-            if (Id == 0)
+            if (ID == 0)
             {
-                Id = 600 + "multiDB.Count";
+                ID = 600 + "multiDB.Count";
             }
             else
             {
                 Utility.PrintYellow("Member already has an ID number.");
             }
-            return Id;
+            return ID;
         }
         
         public void DisplayInfo()
         {
-            Console.WriteLine($"Name: {Name}\nID: {Id}\nDate of Enrollment: {Enroll}\n Accumulated Points: {Points}");
+            Console.WriteLine($"Name: {Name}\nID: {ID}\nDate of Enrollment: {Enroll}\n Accumulated Points: {Points}");
         } 
         
         public void CountedPoints()

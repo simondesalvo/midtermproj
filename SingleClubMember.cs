@@ -10,35 +10,46 @@ namespace midtermproj
         {
 
         }
-        public Single_Club_Member(int id, string name, DateTime enroll) : base(id, name, enroll)
+        public Single_Club_Member(int id, string name, DateTime enroll, int club, bool employee,double bill) : base(id, name, enroll,club,employee,bill)
         {
+
 
         }
         public override void CheckIn(ClubClass club)
         {
-
+            
+            
 
         }
 
-        public override int IdAssign(int memberID)
+        public override int IdAssign()
         {
+            int idConstructor = 1;
+            int gymMembers = 0;
             ClubClass club = new ClubClass();
-            if (memberID == 0)
+            if (ID == 0)
             {
-                Console.Clear();
-                Utility.PrintGreen("Which gym does the member which to enroll in?");
-                ////club.PrintClubs();
-
+                    Console.Clear();
+                    Utility.PrintGreen("Which gym does the member which to enroll in?");
+                    club.PrintClubs();
+                    idConstructor += Validate.NumberRange($"Please enter the gym of interest for applicant (0-{ClubClass.ListClubs().Count})", ClubClass.ListClubs().Count);
+                idConstructor = idConstructor * 100;
+                for (int i =0; i</*memberDb*/; i++)
+                {
+                    if (/*memberDb*/[i].ID>=idConstructor || /*memberDb*/[i].ID < idConstructor + 100)
+                    {
+                        gymMembers++;
+                    }
+                }
+               ID = idConstructor + gymMembers;
             }
             else
             {
                 Console.Clear();
-                Utility.PrintYellow("Member already has an ID number. Are you sure you wish to reassign this ID?");
-
-
+                Utility.PrintYellow("Member already has an ID number.");
             }
 
-            return memberID;
+            return ID;
         }
     }
 }

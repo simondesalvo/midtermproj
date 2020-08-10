@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace midtermproj
 {
@@ -46,7 +47,24 @@ namespace midtermproj
             }
             return end;
         }
+        public static int NumberRange(string message,int range)
+        {
+            int output = -1;
+            while (true)
+            {
+                output = Integer(message);
+                if (output > range||output<0)
+                {
+                    Console.Beep();
+                    continue;
+                }
+                else
+                {
+                    return output;
+                }
+            }
+        }
 
+        }
     }
 
-}
