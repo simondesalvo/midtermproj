@@ -6,8 +6,8 @@ namespace midtermproj
 {
     class Menu
     {
-        
-        public static List<string> mainMenu = new List<string>
+
+        private static List<string> mainMenu = new List<string>
         {
             "Check In",
             "Add Member",
@@ -20,19 +20,19 @@ namespace midtermproj
         public static void DisplayMainMenu()
         {
             Console.Clear();
-            ClubClass c = new ClubClass();
-            Single_Club_Member s = new Single_Club_Member();
+            Club c = new Club();
+            SingleClubMember s = new SingleClubMember();
             MultiClubMember m = new MultiClubMember();
             Utility.PrintGreen("Hello! Welcome to the IHeartDiamonds: Clubs Manager!");
 
 
             //ask what club they're at, for input into clubcheckin methods
-            for (int i = 0; i <mainMenu.Count; i++)
+            for (int i = 0; i < mainMenu.Count; i++)
             {
-                Utility.PrintCyan($"{i+1}. {mainMenu[i]} ");
+                Utility.PrintCyan($"{i + 1}. {mainMenu[i]} ");
             }
             Console.WriteLine("");
-            int input = Validate.NumberRange($"Please select an option from (please input 1 - {mainMenu.Count}).",mainMenu.Count);
+            int input = Validate.NumberRange($"Please select an option from (please input 1 - {mainMenu.Count}).", mainMenu.Count);
             if (input == 1)
             {
                 ////check-in
@@ -55,23 +55,26 @@ namespace midtermproj
                 //add member
                 Console.WriteLine("Would you like to sign up for a single club membership (s) or a multi club membership(m)?");
                 ConsoleKeyInfo singMult = Console.ReadKey();
+                Console.Clear();
                 if (singMult.Key == ConsoleKey.S)
                 {
-                    bool confirm = false;
-                    while (!confirm)
+
+                    SingleClubMember newMemb = new SingleClubMember();
+                    newMemb.Name = Utility.GetInput("What is the new member's name?");
+                    newMemb.Enroll = DateTime.Now;
+                    newMemb.AssignID();
+                    newMemb.Employee = true;
+                    newMemb.Bill = 10; //or anything we want as the default single club bill
+
+                    Console.Clear();
+                    newMemb.DisplayInfo();
+
+                    if (Validate.YesNo("Does the above info look correct?"))
                     {
-                        Single_Club_Member newMemb = new Single_Club_Member();
-                        newMemb.Name = Utility.GetInput("What is the new member's name?");
-                        newMemb.Enroll = DateTime.Now;
-                        newMemb.AssignID();
-                        newMemb.Employee = true;
-                        newMemb.Bill = 10; //or anything we want as the default single club bill
-
-                        Console.Clear();
-                        newMemb.DisplayInfo();
-
-                        confirm = Validate.YesNo("Does the above info look correct?");
+                        newMemb.DBshenanigans();
                     }
+                  
+
                     Console.WriteLine("It worked! Yas!");
                     Console.ReadKey();
                     //time to write to file.io
@@ -79,17 +82,41 @@ namespace midtermproj
                 else if (singMult.Key == ConsoleKey.M)
                 {
                     //same business as single, but with multiclub class
+                    MultiClubMember newMemb = new MultiClubMember();
+                    newMemb.Name = Utility.GetInput("What is the new member's name?");
+                    newMemb.Enroll = DateTime.Now;
+                    newMemb.AssignID();
+                    newMemb.Employee = true;
+                    newMemb.Bill = 25; //or anything we want as the default single club bill
+
+                    Console.Clear();
+                    newMemb.DisplayInfo();
+
+                    if (Validate.YesNo("Does the above info look correct?"))
+                    {
+                        newMemb.DBshenanigans();
+                    }
+
                 }
             }
             else if (input == 3)
             {
-                //display member
-                Console.WriteLine("Congrats! it's 3!");
+               int idNum = Validate.Integer("Please input your member's ID number:");
+               if (idNum < 600)
+                {
+                    s.FindMember(idNum);
+                }
+               else if(idNum >= 600)
+                {
+                    m.FindMember(idNum);
+                }
+
             }
-            else if(input == 4)
+            else if (input == 4)
             {
                 //remove member
                 Console.WriteLine("Input member number");
+
                 //display member method
                 Console.WriteLine();
                 if (Validate.YesNo($"Are you sure you wish to delete {s.Name}?"))
@@ -100,7 +127,7 @@ namespace midtermproj
                 {
                     //return to main menu
                 }
-                
+
 
             }
             else if (input == 5)
@@ -131,7 +158,7 @@ namespace midtermproj
             {
                 Console.WriteLine("Uh oh, not a valid input");
             }
-            
+
         }
     }
 }
