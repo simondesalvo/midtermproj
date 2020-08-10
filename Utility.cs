@@ -29,7 +29,7 @@ namespace midtermproj
         {
             //Makes text cyan. Nothing too fancy
 
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(message);
             Console.ResetColor();
         }

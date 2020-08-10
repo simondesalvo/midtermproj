@@ -18,13 +18,25 @@ namespace midtermproj
         }
 
         
-        private List<MultiClubMember> multiClubMembers = new List<MultiClubMember>();
+        private List<MultiClubMember> _multiClubMembers = new List<MultiClubMember>();
 
+        private void _PopulateMultiMemberList()
+        {
+            FileIO database = new FileIO();
+            foreach (MultiClubMember member in database.MultiMemberDbPull())
+            {
+                _multiClubMembers.Add(member);
+            }
+        }
+        public void StartUp()
+        {
+            _PopulateMultiMemberList();
+        }
         private int CountMembers()
         {
             FileIO membersDb = new FileIO();
             List<MultiClubMember> membersList = new List<MultiClubMember>();
-            foreach (MultiClubMember member in membersDb.MemberDbPull())
+            foreach (MultiClubMember member in membersDb.MultiMemberDbPull())
             {
                     membersList.Add(member);
                 
@@ -35,12 +47,12 @@ namespace midtermproj
         {
             FileIO membersDb = new FileIO();
             MultiClubMember member = new MultiClubMember();
-            member = (MultiClubMember)membersDb.MemberDbPull().Find(m => m.ID == iD);
+            member = (MultiClubMember)membersDb.MultiMemberDbPull().Find(m => m.ID == iD);
             return member;
 
         }
 
-        public override void CheckIn(ClubClass club)
+        public override void CheckIn(Club club)
         {
             Console.WriteLine($"{Name} is welcome at {club.ClubName}");
             Points += 5;
@@ -59,7 +71,7 @@ namespace midtermproj
         {
             if (ID == 0)
             {
-
+                Club = 6;
                 ID = 600 + CountMembers();
             }
             else

@@ -1,25 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace midtermproj
 {
-    class Single_Club_Member : Member
+    class SingleClubMember : Member
     {
-        public Single_Club_Member()
+        public SingleClubMember()
         {
 
         }
-        public Single_Club_Member(int id, string name, DateTime enroll, int club, bool employee, double bill) : base(id, name, enroll, club, employee, bill)
+        public SingleClubMember(int id, string name, DateTime enroll, int club, bool employee, double bill) : base(id, name, enroll, club, employee, bill)
         {
 
 
+        }
+        private List<SingleClubMember> _singleMembers = new List<SingleClubMember>();
+        private void _PopulateSingleMemberList()
+        {
+            FileIO database = new FileIO();
+            foreach(SingleClubMember member in database.SingleMemberDbPull())
+            {
+                _singleMembers.Add(member);
+            }
         }
         private int CountMembers(int club)
         {
             FileIO membersDb = new FileIO();
-            List<Single_Club_Member> membersList = new List<Single_Club_Member>();
-            foreach (Single_Club_Member member in membersDb.MemberDbPull())
+            List<SingleClubMember> membersList = new List<SingleClubMember>();
+            foreach (SingleClubMember member in membersDb.SingleMemberDbPull())
             {
                 if (member.Club == club)
                 {
@@ -28,28 +38,50 @@ namespace midtermproj
             }
             return membersList.Count;
         }
-        private Single_Club_Member FindMember(int iD)
+        public SingleClubMember FindMember(int iD)
         {
-            FileIO membersDb = new FileIO();
-            Single_Club_Member member = new Single_Club_Member();
-            member = (Single_Club_Member)membersDb.MemberDbPull().Find(m => m.ID == iD);
+            FileIO membersDB = new FileIO();
+            SingleClubMember member = new SingleClubMember();
+            member = (SingleClubMember)membersDB.SingleMemberDbPull().Find(m => m.ID == iD);
             return member;
-
         }
 
-        public override void CheckIn(ClubClass club)
+        public override void CheckIn(Club club)
         {
             
-
-
+            if (ID==0&&club.ClubName== "Prof Oaks House of PikaPain")
+            {
+                Utility.PrintGreen($"{Name} is permitted to enter!");
+            }
+            else if (ID == 1 && club.ClubName == "Joe Lewis Memorial Punch Out")
+            {
+                Utility.PrintGreen($"{Name} is permitted to enter!");
+            }
+            else if (ID == 2 && club.ClubName == "Whip It Good")
+            {
+                Utility.PrintGreen($"{Name} is permitted to enter!");
+            }
+            else if (ID == 3 && club.ClubName == "We Fought a War With Michigan for This!?")
+            {
+                Utility.PrintGreen($"{Name} is permitted to enter!");
+            }
+            else if (ID == 4 && club.ClubName == "Ron Swanson's Pyramid of Greatness")
+            {
+                Utility.PrintGreen($"{Name} is permitted to enter!");
+            }
+            else
+            {
+                Utility.PrintYellow($"{Name} is not permitted to enter.");
+            }
         }
+
         public void DisplayInfo()
         {
             Console.WriteLine($"Name: {Name}\nID: {ID}\nDate of Enrollment: {Enroll}\nAssigned Club: ");
         }
         public override int AssignID()
         {
-            ClubClass clubs = new ClubClass();
+            Club clubs = new Club();
             if (ID == 0)
             {
                 Console.Clear();
@@ -57,7 +89,7 @@ namespace midtermproj
 
                 clubs.PrintClubs();
 
-                Club = Validate.NumberRange($"Please enter the club of interest for applicant (0-{ClubClass.ListClubs().Count-1})", ClubClass.ListClubs().Count-1);
+                Club = Validate.NumberRange($"Please enter the club of interest for applicant (0-{midtermproj.Club.ListClubs().Count-1})", midtermproj.Club.ListClubs().Count-1);
                 
                 //club ID is tied to club; 100's place designates the club they belong to at a glance, with 600's designating a multiclub member
                 ID = (1+Club) * 100 + CountMembers(Club);
@@ -76,6 +108,24 @@ namespace midtermproj
         {
             Utility.PrintGreen($"Name: {Name}");
             Utility.PrintGreen($"Fees due: {Bill}");
+        }
+        public void DBshenanigans()
+        {
+            FileIO membersDB = new FileIO();
+            List<SingleClubMember> tempMember = new List<SingleClubMember>();
+
+            for (int i =0; i< membersDB.SingleMemberDbPull().Count; i++)
+            {
+                tempMember.Add(membersDB.SingleMemberDbPull()[i]);
+            }
+            //foreach(SingleClubMember member in membersDB.SingleMemberDbPull())
+            //{
+            //    tempMember.Add(member);
+            //}
+            tempMember.Add(this);
+            membersDB.SingleMembersDbPush(tempMember);
+  
+
         }
     }
 }
