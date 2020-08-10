@@ -12,15 +12,20 @@ namespace midtermproj
         public int Club { get; set; }
         public double Bill { get; set; }
         public bool Employee { get; set; }
+        public bool Status { get; set; }
         public Member()
         {
 
         }
+<<<<<<< HEAD
         public Member(int id, string name, DateTime enroll, int club,  bool employee, double bill)
+=======
+        public Member(int id, string name, DateTime enroll, int club,  bool employee,double bill,bool status)
+>>>>>>> ec3ce20e6a81a66710e98e8df3fc13c80526a086
         {
 
 
-            ID = id; Name = name; Enroll = enroll; Club = club; Employee = employee; Bill = bill;
+            ID = id; Name = name; Enroll = enroll; Club = club; Employee = employee; Bill = bill; Status = status;
 
         }
 

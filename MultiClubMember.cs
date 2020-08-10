@@ -11,7 +11,7 @@ namespace midtermproj
         public int Checkins { get; set; }
         public MultiClubMember() { }
 
-        public MultiClubMember(int id, string name, DateTime enroll, int club, bool employee, int points, double bill, int checkins) : base(id, name, enroll, club, employee, bill)
+        public MultiClubMember(int id, string name, DateTime enroll, int club, bool employee, int points, double bill, int checkins, bool status) : base(id, name, enroll, club, employee, bill,status)
         {
             Points = points;
             Checkins = checkins;
