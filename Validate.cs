@@ -14,9 +14,9 @@ namespace midtermproj
             string input = "";
             int intInput = -1;
             input = Utility.GetInput(message);
-            while (int.TryParse(input,out intInput))
+            while (!int.TryParse(input,out intInput))
             {
-                Console.Beep();
+
                 input = Utility.GetInput(message);
             }
 
@@ -55,7 +55,7 @@ namespace midtermproj
                 output = Integer(message);
                 if (output > range||output<0)
                 {
-                    Console.Beep();
+                    
                     continue;
                 }
                 else
@@ -63,6 +63,16 @@ namespace midtermproj
                     return output;
                 }
             }
+        }
+        public static string InputClub(string c)
+        {
+            Regex regex = new Regex("^[sm]$");
+            while (!regex.IsMatch(c.ToLower()))
+            {
+                Utility.PrintGreen("Please enter \"s\" for single club membership or \"m\" for multiclub membership.");
+                c = Console.ReadKey().ToString();
+            }
+            return c;
         }
 
         }

@@ -12,6 +12,7 @@ namespace midtermproj
     {
         static void Main(string[] args)
         {
+
             bool end = false;
             while (!end)
             {
@@ -91,11 +92,11 @@ namespace midtermproj
 
 
                 */
-                end = Validate.YesNo("Are you sure you want to quit?");
+
                 #endregion
             }
             Console.Clear();
-            Console.Beep(800,200); Console.Beep(400, 200); Console.Beep(200, 200); Console.Beep(100, 200);
+            //Console.Beep(800, 200); Console.Beep(400, 200); Console.Beep(200, 200); Console.Beep(100, 200);
             Utility.PrintGreen("Thank you for using the IHeartDiamond: Clubs manager! Have a nice day!");
         }
     }
