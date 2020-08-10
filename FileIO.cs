@@ -7,8 +7,6 @@ namespace midtermproj
 {
     class FileIO
     {
-
-
         #region Members
 
         public List<SingleClubMember> SingleMemberDbPull()
@@ -31,9 +29,9 @@ namespace midtermproj
             return members;
 
         }
-        public List<Member> MultiMemberDbPull()
+        public List<MultiClubMember> MultiMembersDbPull()
         {
-            List<Member> members = new List<Member>();
+            List<MultiClubMember> members = new List<MultiClubMember>();
 
             StreamReader reader = new StreamReader("../../../MultiMembersDb.txt");
 
@@ -78,7 +76,7 @@ namespace midtermproj
         {   //Make list here consistent.
 
 
-            StreamWriter writer = new StreamWriter("../../../MembersDb.txt");
+            StreamWriter writer = new StreamWriter("../../../MultiMembersDb.txt");
 
             foreach (MultiClubMember member in membersDb)
             {

@@ -42,7 +42,12 @@ namespace midtermproj
         {
             FileIO membersDB = new FileIO();
             SingleClubMember member = new SingleClubMember();
-            member = (SingleClubMember)membersDB.SingleMemberDbPull().Find(m => m.ID == iD);
+            member = membersDB.SingleMemberDbPull().Find(m => m.ID == iD);
+
+            Console.Clear();
+            member.DisplayInfo();
+            Console.ReadKey();
+
             return member;
         }
 
@@ -118,14 +123,9 @@ namespace midtermproj
             {
                 tempMember.Add(membersDB.SingleMemberDbPull()[i]);
             }
-            //foreach(SingleClubMember member in membersDB.SingleMemberDbPull())
-            //{
-            //    tempMember.Add(member);
-            //}
+          
             tempMember.Add(this);
             membersDB.SingleMembersDbPush(tempMember);
-  
-
         }
     }
 }

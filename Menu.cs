@@ -82,12 +82,35 @@ namespace midtermproj
                 else if (singMult.Key == ConsoleKey.M)
                 {
                     //same business as single, but with multiclub class
+                    MultiClubMember newMemb = new MultiClubMember();
+                    newMemb.Name = Utility.GetInput("What is the new member's name?");
+                    newMemb.Enroll = DateTime.Now;
+                    newMemb.AssignID();
+                    newMemb.Employee = true;
+                    newMemb.Bill = 25; //or anything we want as the default single club bill
+
+                    Console.Clear();
+                    newMemb.DisplayInfo();
+
+                    if (Validate.YesNo("Does the above info look correct?"))
+                    {
+                        newMemb.DBshenanigans();
+                    }
+
                 }
             }
             else if (input == 3)
             {
+               int idNum = Validate.Integer("Please input your member's ID number:");
+               if (idNum < 600)
+                {
+                    s.FindMember(idNum);
+                }
+               else if(idNum >= 600)
+                {
+                    m.FindMember(idNum);
+                }
 
-                Console.WriteLine("Congrats! it's 3!");
             }
             else if (input == 4)
             {
