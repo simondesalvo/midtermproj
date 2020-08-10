@@ -11,7 +11,7 @@ namespace midtermproj
         public int Checkins { get; set; }
         public MultiClubMember() { }
 
-        public MultiClubMember(int id, string name, DateTime enroll, int club, bool employee, int points, double bill, int checkins) : base(id, name, enroll, club, employee, bill)
+        public MultiClubMember(int id, string name, DateTime enroll, int club, bool employee, int points, double bill, int checkins, bool status) : base(id, name, enroll, club, employee, bill,status)
         {
             Points = points;
             Checkins = checkins;
@@ -167,7 +167,7 @@ namespace midtermproj
             return member;
         }
 
-        public void DBshenanigans()
+        public void DBAdd()
         {
             FileIO membersDB = new FileIO();
             List<MultiClubMember> tempMember = new List<MultiClubMember>();
@@ -178,6 +178,26 @@ namespace midtermproj
             }
 
             tempMember.Add(this);
+            membersDB.MultiMembersDbPush(tempMember);
+        }
+
+        public void DBRemove()
+        {
+            FileIO membersDB = new FileIO();
+            List<MultiClubMember> tempMember = new List<MultiClubMember>();
+
+            for (int i = 0; i < membersDB.MultiMembersDbPull().Count; i++)
+            {
+                if (membersDB.MultiMembersDbPull()[i].ID == ID)
+                {
+                    Status = false;
+                    tempMember.Add(this);
+                }
+                else
+                {
+                    tempMember.Add(membersDB.MultiMembersDbPull()[i]);
+                }
+            }
             membersDB.MultiMembersDbPush(tempMember);
         }
 

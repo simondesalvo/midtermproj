@@ -71,7 +71,7 @@ namespace midtermproj
 
                     if (Validate.YesNo("Does the above info look correct?"))
                     {
-                        newMemb.DBshenanigans();
+                        newMemb.DBAdd();
                     }
                   
 
@@ -94,7 +94,7 @@ namespace midtermproj
 
                     if (Validate.YesNo("Does the above info look correct?"))
                     {
-                        newMemb.DBshenanigans();
+                        newMemb.DBAdd();
                     }
 
                 }
@@ -115,18 +115,37 @@ namespace midtermproj
             else if (input == 4)
             {
                 //remove member
-                Console.WriteLine("Input member number");
+                int idNum = Validate.Integer("Please input your member's ID number:");
+                if (idNum < 600)
+                {
+                    s=s.FindMember(idNum);
+                    Console.WriteLine();
+                    if (Validate.YesNo($"Are you sure you wish to delete {s.Name}?"))
+                    {
+                        s.DBRemove();
+                    }
+                    else
+                    {
+                        s.Status = true;
+                    }
+                       
+                }
+                else if (idNum >= 600)
+                {
+                    m=m.FindMember(idNum);
+                    Console.WriteLine();
+                    if (Validate.YesNo($"Are you sure you wish to delete {m.Name}?"))
+                    {
+                        m.DBRemove();
+                    }
+                    else
+                    {
+                        m.Status = true;
+                    }
+                }
 
                 //display member method
-                Console.WriteLine();
-                if (Validate.YesNo($"Are you sure you wish to delete {s.Name}?"))
-                {
-                    //remove file.io method
-                }
-                else
-                {
-                    //return to main menu
-                }
+               
 
 
             }
