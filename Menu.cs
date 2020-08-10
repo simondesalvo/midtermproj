@@ -21,10 +21,10 @@ namespace midtermproj
             Club club = new Club();
             return(club.ListClubs(Validate.NumberRange($"Hello! Welcome to the IHeartDiamonds: Clubs Manager: We've got members in Spades(tm)! Which club are you operating from? (input 0-{club.CountClubs() - 1})", club.CountClubs() - 1)));
         }
-
-        public static void DisplayMainMenu(Club club)
+        
+        public static bool DisplayMainMenu(Club club)
         {
-
+            bool output = false;
             Console.Clear();
             Club c = new Club();
             SingleClubMember s = new SingleClubMember();
@@ -159,21 +159,28 @@ namespace midtermproj
                 int idNum = Validate.Integer("Please input your member's ID number:");
                 if (idNum < 600)
                 {
-                    s.FindMember(idNum);
+                    s = s.FindMember(idNum);
+                    s.DisplayFees();
+                    Console.ReadKey();
+
                 }
                 else if (idNum >= 600)
                 {
-                    m.FindMember(idNum);
+                    m = m.FindMember(idNum);
+                    m.DisplayFees();
+                    Console.ReadKey();
                 }
             }
             else if (input == 6)
             {
-                Validate.YesNo("Are you sure you want to quit?");
+                output = Validate.YesNo("Are you sure you want to quit?");
+               
             }
             else
             {
                 Console.WriteLine("Uh oh, not a valid input");
             }
+            return output;
 
         }
     }

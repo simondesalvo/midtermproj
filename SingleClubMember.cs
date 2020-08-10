@@ -11,11 +11,13 @@ namespace midtermproj
         {
 
         }
+
         public SingleClubMember(int id, string name, DateTime enroll, string club, bool employee, double bill, bool status) : base(id, name, enroll, club, employee, bill, status)
         {
 
 
         }
+
         private List<SingleClubMember> _singleMembers = new List<SingleClubMember>();
         private void _PopulateSingleMemberList()
         {

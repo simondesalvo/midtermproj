@@ -18,7 +18,8 @@ namespace midtermproj
             bool end = false;
             while (!end)
             {
-                Menu.DisplayMainMenu(club);
+                end = Menu.DisplayMainMenu(club);
+                
 
                 #region AddMember
                 /*    1)Add member;
