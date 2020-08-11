@@ -40,6 +40,7 @@ namespace midtermproj
             }
             Console.WriteLine("");
             int input = Validate.NumberRange($"Please select an option from (please input 1 - {mainMenu.Count}).", mainMenu.Count);
+            //member check-in
             if (input == 1)
             {
                 int idNum = Validate.Integer("Please input your member's ID number:");
@@ -98,14 +99,15 @@ namespace midtermproj
                 }
                 else if (inputMembership == "m")
                 {
-                    //same business as single, but with multiclub class
+                    
                     MultiClubMember newMemb = new MultiClubMember();
                     newMemb.Name = Utility.GetInput("What is the new member's name?");
                     newMemb.Enroll = DateTime.Now;
                     newMemb.LastTimeBilled = DateTime.Now;
                     newMemb.AssignID();
+
                     newMemb.Status = true;
-                    newMemb.Bill = 25; //or anything we want as the default single club bill
+                    newMemb.Bill = 25; 
 
                     Console.Clear();
                     newMemb.DisplayInfo();
@@ -118,6 +120,7 @@ namespace midtermproj
                 }
             }
             else if (input == 3)
+                //display user
             {
                 int idNum = Validate.Integer("Please input your member's ID number:");
                 if (idNum < 600)
@@ -156,7 +159,7 @@ namespace midtermproj
             }
             else if (input == 4)
             {
-                //remove member
+                //remove member (leaves member info in so they can be spammed with "please come back" messages)
                 int idNum = Validate.Integer("Please input your member's ID number: ");
                 if (idNum < 600)
                 {
@@ -190,12 +193,9 @@ namespace midtermproj
                     }
                 }
 
-                //display member method
-
-
-
             }
             else if (input == 5)
+                //displays current bill and points, if someone is already checed in but maybe wants to trade points for a sports drink
             {
                 int idNum = Validate.Integer("Please input your member's ID number: ");
                 if (idNum < 600)
@@ -231,6 +231,7 @@ namespace midtermproj
                 }
             }
             else if (input == 6)
+                //quittin' time
             {
                 output = Validate.YesNo("Are you sure you want to quit?");
 

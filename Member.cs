@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace midtermproj
+    //parent class for single and multi club members
 {
     abstract class Member
     {

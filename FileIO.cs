@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 
 namespace midtermproj
+    //it's the file i/o stuff~ writing and reading for single member, multi member, and our list of clubs
 {
     class FileIO
     {
@@ -51,7 +52,7 @@ namespace midtermproj
 
         }
         public void SingleMembersDbPush(List<SingleClubMember> membersDb)
-        {   //Make list here consistent.
+        {   
 
 
             StreamWriter writer = new StreamWriter("../../../SingleMembersDb.txt");
@@ -68,7 +69,7 @@ namespace midtermproj
             writer.Close();
         }
         public void MultiMembersDbPush(List<MultiClubMember> membersDb)
-        {   //Make list here consistent.
+        {   
 
 
             StreamWriter writer = new StreamWriter("../../../MultiMembersDb.txt");

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace midtermproj
-{       //at least four clubs, eventually getting some file i/o stuff with Joe, basic details like name and address
+{       //club class and club listing methods
     public enum St
     {
         Michigan,
