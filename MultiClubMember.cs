@@ -27,7 +27,7 @@ namespace midtermproj
             {
                 multiClubMember = membersDb.MultiMembersDbPull()[i];
 
-                if (DateTime.Now.Day == LastTimeBilled.Day && DateTime.Now.Date != LastTimeBilled.Date)
+                if (DateTime.Now.Day == multiClubMember.LastTimeBilled.Day && DateTime.Now.Date != multiClubMember.LastTimeBilled.Date && multiClubMember.Status==true)
                 {
                     if (multiClubMember.Employee)
                     {
@@ -78,18 +78,28 @@ namespace midtermproj
         #region Public
         public override void CheckIn(Club club)
         {
-            Console.WriteLine($"{Name} is welcome at {club.ClubName}");
-            Points += 5;
-            Checkins++;
-            if (Employee)
+            if (Status)
             {
-                EmployeeCountedPoints();
+                Console.WriteLine($"{Name} is welcome at {club.ClubName}");
+                Points += 5;
+                Checkins++;
+                if (Employee)
+                {
+                    EmployeeCountedPoints();
+                }
+                else
+                {
+                    CountedPoints();
+                }
+                UpdatePoints();
             }
             else
             {
-                CountedPoints();
+                Console.Clear();
+                Utility.PrintYellow($"{Name} is no longer a member. They will have to re-up membership to enter.\nPress any key to return to main menu.");
+                Console.ReadKey();
             }
-            UpdatePoints();
+
         }
 
         public override int AssignID()
@@ -173,7 +183,7 @@ namespace midtermproj
         public override void DisplayFees()
         {
             Utility.PrintGreen($"Name: {Name}");
-            Utility.PrintGreen($"Fees due: {Bill}");
+            Utility.PrintGreen($"Fees due: ${Bill}.00");
             Utility.PrintGreen($"Points Earned: {Points}");
         }
 

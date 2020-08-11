@@ -80,14 +80,15 @@ namespace midtermproj
                     SingleClubMember newMemb = new SingleClubMember();
                     newMemb.Name = Utility.GetInput("What is the new member's name?");
                     newMemb.Enroll = DateTime.Now;
+                    newMemb.LastTimeBilled = DateTime.Now;
                     newMemb.AssignID();
-                    newMemb.Employee = true;
+                    newMemb.Status = true;
                     newMemb.Bill = 10;
 
                     Console.Clear();
                     newMemb.DisplayInfo();
 
-                    if (Validate.YesNo("Does the above info look correct?"))
+                    if (Validate.YesNo("Does the above info look correct? (input Y/N)"))
                     {
                         newMemb.DBAdd();
                         Utility.PrintGreen($"{newMemb.Name} added to the database!");
@@ -101,14 +102,15 @@ namespace midtermproj
                     MultiClubMember newMemb = new MultiClubMember();
                     newMemb.Name = Utility.GetInput("What is the new member's name?");
                     newMemb.Enroll = DateTime.Now;
+                    newMemb.LastTimeBilled = DateTime.Now;
                     newMemb.AssignID();
-                    newMemb.Employee = true;
+                    newMemb.Status = true;
                     newMemb.Bill = 25; //or anything we want as the default single club bill
 
                     Console.Clear();
                     newMemb.DisplayInfo();
 
-                    if (Validate.YesNo("Does the above info look correct?"))
+                    if (Validate.YesNo("Does the above info look correct? Input (Y/N)"))
                     {
                         newMemb.DBAdd();
                     }
@@ -127,6 +129,7 @@ namespace midtermproj
                     }
                     else
                     {
+                        Console.Clear();
                         s.DisplayInfo();
                         Utility.PrintGreen("Press any key to return to the main menu.");
                         Console.ReadKey();
@@ -142,6 +145,7 @@ namespace midtermproj
                     }
                     else
                     {
+                        Console.Clear();
                         m.DisplayInfo();
                         Utility.PrintGreen("Press any key to return to the main menu.");
                         Console.ReadKey();
@@ -163,7 +167,7 @@ namespace midtermproj
                     }
                     else
                     {
-                        if (Validate.YesNo($"Are you sure you wish to delete {s.Name}?"))
+                        if (Validate.YesNo($"Are you sure you wish to delete {s.Name}? Input (Y/N)."))
                         {
                             s.DBRemove();
                         }
@@ -179,7 +183,7 @@ namespace midtermproj
                     }
                     else
                     {
-                        if (Validate.YesNo($"Are you sure you wish to delete {m.Name}?"))
+                        if (Validate.YesNo($"Are you sure you wish to delete {m.Name}? Input (Y/N)."))
                         {
                             m.DBRemove();
                         }
@@ -203,6 +207,7 @@ namespace midtermproj
                     }
                     else
                     {
+                        Console.Clear();
                         s.DisplayFees();
                         Console.ReadKey();
                     }
@@ -218,6 +223,7 @@ namespace midtermproj
                     }
                     else
                     {
+                        Console.Clear();
                         m.DisplayFees();
                         Console.ReadKey();
                     }

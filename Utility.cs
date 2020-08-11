@@ -12,7 +12,7 @@ namespace midtermproj
             //used to display a message in green, then return the user's response
             
             string input = "";
-            while (input == "")
+            while (input.Trim() == "")
             {
                 PrintGreen(message);
                 input = Console.ReadLine();

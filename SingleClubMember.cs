@@ -33,7 +33,7 @@ namespace midtermproj
             {
                 singleClubMember = membersDb.SingleMemberDbPull()[i];
 
-                if (DateTime.Now.Day == LastTimeBilled.Day && DateTime.Now.Date != LastTimeBilled.Date)
+                if (DateTime.Now.Day == singleClubMember.LastTimeBilled.Day && DateTime.Now.Date != singleClubMember.LastTimeBilled.Date && singleClubMember.Status==true)
                 {
                     if (singleClubMember.Employee)
                     {
@@ -101,7 +101,7 @@ namespace midtermproj
         public override void CheckIn(Club checkIn)
         {
 
-            if (Club.Trim() == checkIn.ClubName.Trim())
+            if (Club.Trim() == checkIn.ClubName.Trim() && Status ==true)
             {
                 Utility.PrintGreen($"{Name} is permitted to enter! \nPress any key to return to main menu.");
                 Console.ReadKey();
@@ -145,7 +145,7 @@ namespace midtermproj
         public override void DisplayFees()
         {
             Utility.PrintGreen($"Name: {Name}");
-            Utility.PrintGreen($"Fees due: {Bill}");
+            Utility.PrintGreen($"Fees due: ${Bill}.00");
         }
         public void DBAdd()
         {
