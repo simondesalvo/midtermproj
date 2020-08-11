@@ -4,6 +4,8 @@ using System.IO;
 using System.Text;
 
 namespace midtermproj
+    //single club members can only cehck in at the club they're signed up for, no reward points
+    //methods for check in, finding and displaying member info, etc
 {
     class SingleClubMember : Member
     {

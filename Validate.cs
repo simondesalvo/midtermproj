@@ -4,6 +4,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 namespace midtermproj
+    //all our various validation methods live here
+    //prompts users for info, takes the info in, validates the info
 {
     class Validate
     {

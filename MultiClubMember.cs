@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace midtermproj
+    //multiclub members can check in at any club, and have reward points
+    //check-in, display info, adding methods
 {
     class MultiClubMember : Member
     {

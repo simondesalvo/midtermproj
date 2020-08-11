@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace midtermproj
+    //utility methods live here
 {
     class Utility
     {
@@ -38,7 +39,7 @@ namespace midtermproj
         }
         public static void PrintYellow(string message)
         {
-            //Makes text yellow. Maybe good for error messages?
+            //Makes text yellow. 
             
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(message);
