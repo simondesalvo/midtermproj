@@ -120,7 +120,7 @@ namespace midtermproj
 
         public void DisplayInfo()
         {
-            Utility.PrintCyan($"Name: {Name}\nID: {ID}\nDate of Enrollment: {Enroll}\n Accumulated Points: {Points}\nMulticlub Member!");
+            Utility.PrintCyan($"Name: {Name}\nID: {ID}\nDate of Enrollment: {Enroll}\nAccumulated Points: {Points}\nMulticlub Member!");
         }
 
         public void CountedPoints()

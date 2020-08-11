@@ -23,6 +23,7 @@ namespace midtermproj
             }
             Console.Clear();
             Utility.PrintGreen("Thank you for using the IHeartDiamond: Clubs manager! Have a nice day!");
+            Console.Beep(1000,200); Console.Beep(500, 200); Console.Beep(250, 200); Console.Beep(125, 200); Console.Beep(60, 200);
 
         }
         public static void StartUp()

@@ -21,7 +21,7 @@ namespace midtermproj
             Club club = new Club();
             Utility.PrintGreen($"Hello! Welcome to the IHeartDiamonds: Clubs Manager: We've got members in Spades(tm)!");
             club.DisplayClubs();
-            return (club.PullClubs(Validate.NumberRange($"Which club are you operating from? (input 0-{club.CountClubs() - 1})", club.CountClubs() - 1)));
+            return (club.PullClubs(Validate.NumberRange($"Which club are you operating from? (input 0-{club.CountClubs() - 1}).\n", club.CountClubs() - 1)));
 
         }
 
@@ -39,7 +39,7 @@ namespace midtermproj
                 Utility.PrintCyan($"{i + 1}. {mainMenu[i]} ");
             }
             Console.WriteLine("");
-            int input = Validate.NumberRange($"Please select an option from (please input 1 - {mainMenu.Count}).", mainMenu.Count);
+            int input = Validate.NumberRange($"Please select an option from (please input 1 - {mainMenu.Count}).\nPress 0 to clear console or crash Mac computers; Both are good services.", mainMenu.Count);
             //member check-in
             if (input == 1)
             {
@@ -233,12 +233,12 @@ namespace midtermproj
             else if (input == 6)
                 //quittin' time
             {
-                output = Validate.YesNo("Are you sure you want to quit?");
+                output = Validate.YesNo("Are you sure you want to quit? Input (Y/N)");
 
             }
             else
             {
-                Console.WriteLine("Uh oh, not a valid input");
+                Console.Beep(1000, 150); Console.Beep(500, 150); Console.Beep(200, 150); Console.Beep(500, 150); Console.Beep(1000, 150);
             }
             return output;
 
