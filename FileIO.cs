@@ -20,7 +20,7 @@ namespace midtermproj
             {
                 string[] membersplit = memberline.Split('|');
                 SingleClubMember memb = new SingleClubMember(int.Parse(membersplit[0]), membersplit[1], DateTime.Parse(membersplit[2]),
-                                                       (membersplit[3]), bool.Parse(membersplit[4]), double.Parse(membersplit[5]), bool.Parse(membersplit[6]));
+                                                       (membersplit[3]), bool.Parse(membersplit[4]), double.Parse(membersplit[5]), bool.Parse(membersplit[6]),DateTime.Parse(membersplit[7]));
                     members.Add(memb);
                     memberline = reader.ReadLine();
             }
@@ -41,7 +41,8 @@ namespace midtermproj
                 string[] membersplit = memberline.Split('|');
                 members.Add(new MultiClubMember(int.Parse(membersplit[0]), membersplit[1], DateTime.Parse(membersplit[2]),
                                                 (membersplit[3]), bool.Parse(membersplit[4]), int.Parse(membersplit[5]),
-                                                double.Parse(membersplit[6]), int.Parse(membersplit[7]), bool.Parse(membersplit[8])));
+                                                double.Parse(membersplit[6]), int.Parse(membersplit[7]), bool.Parse(membersplit[8])
+                                                ,DateTime.Parse(membersplit[9])));
                 memberline = reader.ReadLine();
             }
             reader.Close();
@@ -59,7 +60,7 @@ namespace midtermproj
             {
                 if (member.ID < 600)
                 {
-                    writer.WriteLine($"{member.ID}|{member.Name}|{member.Enroll}|{member.Club}|{member.Employee}|{member.Bill}|{member.Status}");
+                    writer.WriteLine($"{member.ID}|{member.Name}|{member.Enroll}|{member.Club}|{member.Employee}|{member.Bill}|{member.Status}|{member.LastTimeBilled}");
                 }
 
             }
@@ -76,7 +77,7 @@ namespace midtermproj
             {
 
                 writer.WriteLine($"{member.ID}|{member.Name}|{member.Enroll}|{member.Club}|{member.Employee}|{member.Points}|" +
-             $"{member.Bill}|{member.Checkins}|{member.Status}");
+             $"{member.Bill}|{member.Checkins}|{member.Status}|{member.LastTimeBilled}");
 
 
             }

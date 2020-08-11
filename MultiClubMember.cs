@@ -11,16 +11,43 @@ namespace midtermproj
         public int Checkins { get; set; }
         public MultiClubMember() { }
 
-        public MultiClubMember(int id, string name, DateTime enroll, string club, bool employee, int points, double bill, int checkins, bool status) : base(id, name, enroll, club, employee, bill,status)
+        public MultiClubMember(int id, string name, DateTime enroll, string club, bool employee, int points, double bill, int checkins, bool status,DateTime lastTimeBilled) : base(id, name, enroll, club, employee, bill,status,lastTimeBilled)
         {
             Points = points;
             Checkins = checkins;
         }
 
+        #region PrivateMethods
+        private void _Billing()
+        {
+            FileIO membersDb = new FileIO();
+            MultiClubMember multiClubMember = new MultiClubMember();
+            List<MultiClubMember> mcMembers = new List<MultiClubMember>();
+            for (int i = 0; i < membersDb.MultiMembersDbPull().Count; i++)
+            {
+                multiClubMember = membersDb.MultiMembersDbPull()[i];
 
+                if (DateTime.Now.Day == LastTimeBilled.Day && DateTime.Now.Date != LastTimeBilled.Date)
+                {
+                    if (multiClubMember.Employee)
+                    {
+                        multiClubMember.Bill += 20;
+                    }
+                    else
+                    {
+                        multiClubMember.Bill += 25;
+                    }
 
+                    multiClubMember.LastTimeBilled = DateTime.Now;
+                }
 
-        private bool DrawFromFile(int input)
+                mcMembers.Add(multiClubMember);
+            }
+
+            membersDb.MultiMembersDbPush(mcMembers);
+        }
+
+        private bool _DrawFromFile(int input)
         {
             bool idMatch = false;
             FileIO membersDb = new FileIO();
@@ -35,7 +62,7 @@ namespace midtermproj
             }
             return idMatch;
         }
-        private int CountMembers()
+        private int _CountMembers()
         {
             FileIO membersDb = new FileIO();
             List<MultiClubMember> membersList = new List<MultiClubMember>();
@@ -46,7 +73,9 @@ namespace midtermproj
             }
             return membersList.Count;
         }
+        #endregion
 
+        #region Public
         public override void CheckIn(Club club)
         {
             Console.WriteLine($"{Name} is welcome at {club.ClubName}");
@@ -68,7 +97,7 @@ namespace midtermproj
             if (ID == 0)
             {
                 Club = "All";
-                ID = 600 + CountMembers();
+                ID = 600 + _CountMembers();
             }
             else
             {
@@ -153,7 +182,7 @@ namespace midtermproj
             FileIO membersDB = new FileIO();
             MultiClubMember member = new MultiClubMember();
 
-            if (DrawFromFile(id))
+            if (_DrawFromFile(id))
             {
                 member = membersDB.MultiMembersDbPull().Find(m => m.ID == id);
                 member.DisplayInfo();
@@ -184,7 +213,11 @@ namespace midtermproj
             tempMember.Add(this);
             membersDB.MultiMembersDbPush(tempMember);
         }
-
+        public static void StartUp()
+        {
+            MultiClubMember multiClubMember = new MultiClubMember();
+            multiClubMember._Billing();
+        }
         public void DBRemove()
         {
             FileIO membersDB = new FileIO();
@@ -223,6 +256,7 @@ namespace midtermproj
             }
             membersDB.MultiMembersDbPush(tempMember);
         }
+        #endregion
     }
 }
 

@@ -12,15 +12,47 @@ namespace midtermproj
 
         }
 
-        public SingleClubMember(int id, string name, DateTime enroll, string club, bool employee, double bill, bool status) : base(id, name, enroll, club, employee, bill, status)
+        public SingleClubMember(int id, string name, DateTime enroll, string club, bool employee, double bill, bool status,DateTime lastTimeBilled) : base(id, name, enroll, club, employee, bill, status, lastTimeBilled)
         {
 
 
         }
 
+        #region Lists
         private List<SingleClubMember> _singleMembers = new List<SingleClubMember>();
         private List<int> _idNumbers = new List<int>();
-        private int CountMembers()
+        #endregion
+
+        #region PrivateMethods
+        private void _Billing()
+        {
+            FileIO membersDb = new FileIO();
+            SingleClubMember singleClubMember = new SingleClubMember();
+            List<SingleClubMember> scMembers = new List<SingleClubMember>();
+            for (int i = 0; i < membersDb.SingleMemberDbPull().Count; i++)
+            {
+                singleClubMember = membersDb.SingleMemberDbPull()[i];
+
+                if (DateTime.Now.Day == LastTimeBilled.Day && DateTime.Now.Date != LastTimeBilled.Date)
+                {
+                    if (singleClubMember.Employee)
+                    {
+                        singleClubMember.Bill += 9;
+                    }
+                    else
+                    {
+                        singleClubMember.Bill += 10;
+                    }
+                    
+                    singleClubMember.LastTimeBilled = DateTime.Now;
+                }
+
+                scMembers.Add(singleClubMember);
+            }
+
+            membersDb.SingleMembersDbPush(scMembers);
+        }
+        private int _CountMembers()
         {
 
             FileIO membersDb = new FileIO();
@@ -32,7 +64,7 @@ namespace midtermproj
             return membersList.Count;
 
         }
-        private bool DrawFromFile(int input)
+        private bool _DrawFromFile(int input)
         {
             bool idMatch = false;
             FileIO membersDb = new FileIO();
@@ -47,12 +79,15 @@ namespace midtermproj
             }
             return idMatch;
         }
+        #endregion
 
+
+        #region PublicMethods
         public SingleClubMember FindMember(int id)
         {
             FileIO membersDB = new FileIO();
             SingleClubMember member = new SingleClubMember();
-            if (DrawFromFile(id))
+            if (_DrawFromFile(id))
             {
                 member = membersDB.SingleMemberDbPull().Find(m => m.ID == id);
             }
@@ -63,7 +98,6 @@ namespace midtermproj
             }
             return member;
         }
-
         public override void CheckIn(Club checkIn)
         {
 
@@ -78,7 +112,6 @@ namespace midtermproj
                 Console.ReadKey();
             }
         }
-
         public void DisplayInfo()
         {
             Console.WriteLine($"Name: {Name}\nID: {ID}\nDate of Enrollment: {Enroll}\nAssigned Club: {Club}");
@@ -98,7 +131,7 @@ namespace midtermproj
                 clubs = clubs.PullClubs(input);
                 Club = clubs.ClubName;
                 //club ID is tied to club; 100's place designates the club they belong to at a glance, with 600's designating a multiclub member
-                ID = (1 + input) * 100 + CountMembers();
+                ID = (1 + input) * 100 + _CountMembers();
 
             }
             else
@@ -109,7 +142,6 @@ namespace midtermproj
 
             return ID;
         }
-
         public override void DisplayFees()
         {
             Utility.PrintGreen($"Name: {Name}");
@@ -128,7 +160,6 @@ namespace midtermproj
             tempMember.Add(this);
             membersDB.SingleMembersDbPush(tempMember);
         }
-
         public void DBRemove()
         {
             FileIO membersDB = new FileIO();
@@ -148,5 +179,13 @@ namespace midtermproj
             }
             membersDB.SingleMembersDbPush(tempMember);
         }
+        public static void Startup()
+        {
+            SingleClubMember singleClubMember = new SingleClubMember();
+            singleClubMember._Billing();
+        }
+
+        #endregion
+
     }
 }

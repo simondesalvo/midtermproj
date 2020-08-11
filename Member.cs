@@ -13,6 +13,7 @@ namespace midtermproj
         public double Bill { get; set; }
         public bool Employee { get; set; }
         public bool Status { get; set; }
+        public DateTime LastTimeBilled { get; set; }
         public Member()
         {
 
@@ -20,12 +21,12 @@ namespace midtermproj
 
        
 
-        public Member(int id, string name, DateTime enroll, string club,  bool employee,double bill,bool status)
+        public Member(int id, string name, DateTime enroll, string club,  bool employee,double bill,bool status,DateTime lastTimeBilled)
 
         {
 
 
-            ID = id; Name = name; Enroll = enroll; Club = club; Employee = employee; Bill = bill; Status = status;
+            ID = id; Name = name; Enroll = enroll; Club = club; Employee = employee; Bill = bill; Status = status; LastTimeBilled = lastTimeBilled;
 
         }
 

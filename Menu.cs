@@ -6,7 +6,7 @@ namespace midtermproj
 {
     class Menu
     {
-
+        
         private static List<string> mainMenu = new List<string>
         {
             "Check In Member",
