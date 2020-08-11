@@ -1,5 +1,6 @@
-200|Singleboi|8/10/2020 9:53:46 AM|Joe Lewis Memorial Punch Out|True|10|True|8/10/2020 9:53:46 AM
+200|Singleboi|7/11/2020 9:53:46 AM|Joe Lewis Memorial Punch Out|True|19|True|8/11/2020 1:16:59 PM
 300|Doubleboi|8/20/2020 9:52:30 PM|Whip It Good|False|5|True|8/20/2020 9:52:30 PM
 102|Bobert|8/10/2020 3:27:06 PM|Prof Oaks House of PikaPain |True|10|False|8/10/2020 3:27:06 PM
 103|Bruno|8/10/2020 5:29:09 PM|Prof Oaks House of PikaPain |True|10|False|8/10/2020 5:29:09 PM
 204|Blabbert|8/10/2020 5:30:54 PM|Joe Lewis Memorial Punch Out |True|10|False|8/10/2020 5:30:54 PM
+305|Tripleboi|8/11/2020 1:31:22 PM|Whip It Good |False|10|True|8/11/2020 1:31:22 PM

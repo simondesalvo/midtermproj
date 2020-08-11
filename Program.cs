@@ -13,10 +13,11 @@ namespace midtermproj
         static void Main(string[] args)
         {
             Club club = new Club();
+            StartUp();
             club = Menu.SelectClub();
             bool end = false;
 
-            StartUp();
+
             while (!end)
             {
                 end = Menu.DisplayMainMenu(club);

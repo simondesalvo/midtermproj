@@ -80,7 +80,7 @@ namespace midtermproj
         #region Public
         public override void CheckIn(Club club)
         {
-            if (Status)
+            if (Status==true)
             {
                 Console.WriteLine($"{Name} is welcome at {club.ClubName}");
                 Points += 5;
@@ -197,8 +197,7 @@ namespace midtermproj
             if (_DrawFromFile(id))
             {
                 member = membersDB.MultiMembersDbPull().Find(m => m.ID == id);
-                member.DisplayInfo();
-                Console.ReadKey();
+
             }
             else
             {
