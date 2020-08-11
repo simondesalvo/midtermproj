@@ -41,7 +41,7 @@ namespace midtermproj
             List<Club> clubs = new List<Club>();
             for(int i=0;i<clubDB.ClubsDbPull().Count;i++)
             {
-                Utility.PrintCyan($"{i} {clubDB.ClubsDbPull()[i].ClubName}");
+                Console.WriteLine($"{i} {clubDB.ClubsDbPull()[i].ClubName}");
             }
         }
         public int CountClubs()

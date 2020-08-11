@@ -7,6 +7,7 @@ namespace midtermproj
 {
     class Validate
     {
+        
         public static int Integer(string message)
         {
             //validates if a number is an integer. additional parameters can be added via regex

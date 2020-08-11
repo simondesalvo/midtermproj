@@ -18,17 +18,23 @@ namespace midtermproj
         }
 
 
-        private List<MultiClubMember> _multiClubMembers = new List<MultiClubMember>();
 
-        private void _PopulateMultiMemberList()
+
+        private bool DrawFromFile(int input)
         {
-            FileIO database = new FileIO();
-            foreach (MultiClubMember member in database.MultiMembersDbPull())
+            bool idMatch = false;
+            FileIO membersDb = new FileIO();
+            List<int> memberIDs = new List<int>();
+            for (int i = 0; i < membersDb.MultiMembersDbPull().Count; i++)
             {
-                _multiClubMembers.Add(member);
-            }
-        }
+                if (membersDb.MultiMembersDbPull()[i].ID == input)
+                {
+                    idMatch = true;
+                }
 
+            }
+            return idMatch;
+        }
         private int CountMembers()
         {
             FileIO membersDb = new FileIO();
@@ -142,15 +148,25 @@ namespace midtermproj
             Utility.PrintGreen($"Points Earned: {Points}");
         }
 
-        public MultiClubMember FindMember(int iD)
+        public MultiClubMember FindMember(int id)
         {
             FileIO membersDB = new FileIO();
             MultiClubMember member = new MultiClubMember();
-            member = membersDB.MultiMembersDbPull().Find(m => m.ID == iD);
 
+            if (DrawFromFile(id))
+            {
+                member = membersDB.MultiMembersDbPull().Find(m => m.ID == id);
+                member.DisplayInfo();
+                Console.ReadKey();
+            }
+            else
+            {
+                Utility.PrintYellow($"The ID {id} is not in the database. Press any key to return to the main menu.");
+                Console.ReadKey();
+            }
             Console.Clear();
-            member.DisplayInfo();
-            Console.ReadKey();
+
+
 
             return member;
         }

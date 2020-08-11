@@ -9,7 +9,7 @@ namespace midtermproj
 
         private static List<string> mainMenu = new List<string>
         {
-            "Check In",
+            "Check In Member",
             "Add Member",
             "Display Member",
             "Remove Member",
@@ -34,8 +34,6 @@ namespace midtermproj
             MultiClubMember m = new MultiClubMember();
             Utility.PrintGreen($"{club.ClubName}: Operations");
 
-
-            //ask what club they're at, for input into clubcheckin methods
             for (int i = 0; i < mainMenu.Count; i++)
             {
                 Utility.PrintCyan($"{i + 1}. {mainMenu[i]} ");
@@ -48,13 +46,26 @@ namespace midtermproj
                 if (idNum < 600)
                 {
                     s = s.FindMember(idNum);
-                    s.CheckIn(club);
+                    if (s.ID == 0)
+                    {
+
+                    }
+                    else
+                    {
+                        s.CheckIn(club);
+                    }
                 }
                 else if (idNum >= 600)
                 {
                     m = m.FindMember(idNum);
-                    m.CheckIn(club);
-                    Console.ReadKey();
+                    if (m.ID == 0)
+                    {
+
+                    }
+                    else
+                    {
+                        m.CheckIn(club);
+                    }
                 }
 
             }
@@ -71,7 +82,7 @@ namespace midtermproj
                     newMemb.Enroll = DateTime.Now;
                     newMemb.AssignID();
                     newMemb.Employee = true;
-                    newMemb.Bill = 10; 
+                    newMemb.Bill = 10;
 
                     Console.Clear();
                     newMemb.DisplayInfo();
@@ -82,7 +93,7 @@ namespace midtermproj
                         Utility.PrintGreen($"{newMemb.Name} added to the database!");
                         Console.ReadKey();
                     }
-               
+
                 }
                 else if (inputMembership == "m")
                 {
@@ -109,16 +120,33 @@ namespace midtermproj
                 int idNum = Validate.Integer("Please input your member's ID number:");
                 if (idNum < 600)
                 {
-                    s=s.FindMember(idNum);
-                    Console.Clear();
-                    s.DisplayInfo();
-                    Utility.PrintGreen("Press any key to return to the main menu.");
-                    Console.ReadKey();
+                    s = s.FindMember(idNum);
+                    if (s.ID == 0)
+                    {
+
+                    }
+                    else
+                    {
+                        s.DisplayInfo();
+                        Utility.PrintGreen("Press any key to return to the main menu.");
+                        Console.ReadKey();
+                    }
+
                 }
                 else if (idNum >= 600)
                 {
-                    m=m.FindMember(idNum);
-                    
+                    m = m.FindMember(idNum);
+                    if (m.ID == 0)
+                    {
+
+                    }
+                    else
+                    {
+                        m.DisplayInfo();
+                        Utility.PrintGreen("Press any key to return to the main menu.");
+                        Console.ReadKey();
+                    }
+
                 }
 
             }
@@ -129,28 +157,32 @@ namespace midtermproj
                 if (idNum < 600)
                 {
                     s = s.FindMember(idNum);
-                    Console.WriteLine();
-                    if (Validate.YesNo($"Are you sure you wish to delete {s.Name}?"))
+                    if (s.ID == 0)
                     {
-                        s.DBRemove();
+
                     }
                     else
                     {
-                        s.Status = true;
+                        if (Validate.YesNo($"Are you sure you wish to delete {s.Name}?"))
+                        {
+                            s.DBRemove();
+                        }
                     }
 
                 }
                 else if (idNum >= 600)
                 {
                     m = m.FindMember(idNum);
-                    Console.WriteLine();
-                    if (Validate.YesNo($"Are you sure you wish to delete {m.Name}?"))
+                    if (m.ID == 0)
                     {
-                        m.DBRemove();
+
                     }
                     else
                     {
-                        m.Status = true;
+                        if (Validate.YesNo($"Are you sure you wish to delete {m.Name}?"))
+                        {
+                            m.DBRemove();
+                        }
                     }
                 }
 
@@ -165,15 +197,31 @@ namespace midtermproj
                 if (idNum < 600)
                 {
                     s = s.FindMember(idNum);
-                    s.DisplayFees();
-                    Console.ReadKey();
+                    if (s.ID == 0)
+                    {
+
+                    }
+                    else
+                    {
+                        s.DisplayFees();
+                        Console.ReadKey();
+                    }
+
 
                 }
                 else if (idNum >= 600)
                 {
                     m = m.FindMember(idNum);
-                    m.DisplayFees();
-                    Console.ReadKey();
+                    if (m.ID == 0)
+                    {
+
+                    }
+                    else
+                    {
+                        m.DisplayFees();
+                        Console.ReadKey();
+                    }
+
                 }
             }
             else if (input == 6)

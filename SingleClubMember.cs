@@ -19,7 +19,7 @@ namespace midtermproj
         }
 
         private List<SingleClubMember> _singleMembers = new List<SingleClubMember>();
-
+        private List<int> _idNumbers = new List<int>();
         private int CountMembers()
         {
 
@@ -32,11 +32,35 @@ namespace midtermproj
             return membersList.Count;
 
         }
-        public SingleClubMember FindMember(int iD)
+        private bool DrawFromFile(int input)
+        {
+            bool idMatch = false;
+            FileIO membersDb = new FileIO();
+            List<int> memberIDs = new List<int>();
+            for(int i=0; i< membersDb.SingleMemberDbPull().Count;i++)
+            {
+                if (membersDb.SingleMemberDbPull()[i].ID == input)
+                {
+                    idMatch = true;
+                }
+                
+            }
+            return idMatch;
+        }
+
+        public SingleClubMember FindMember(int id)
         {
             FileIO membersDB = new FileIO();
             SingleClubMember member = new SingleClubMember();
-            member = membersDB.SingleMemberDbPull().Find(m => m.ID == iD);
+            if (DrawFromFile(id))
+            {
+                member = membersDB.SingleMemberDbPull().Find(m => m.ID == id);
+            }
+            else
+            {
+                Utility.PrintYellow($"The ID {id} is not in the database. Press any key to return to the main menu.");
+                Console.ReadKey();
+            }
             return member;
         }
 
